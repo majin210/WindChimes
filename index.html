@@ -69,7 +69,7 @@ canvas#pc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .fp{font-size:11px;padding:4px 13px;border-radius:100px;background:transparent;border:1px solid rgba(232,227,216,.18);color:var(--cream-muted);cursor:pointer;font-family:var(--sans);transition:all .15s}
 .fp:hover{border-color:rgba(232,227,216,.42);color:var(--cream-text)}
 .fp.on{background:var(--cream-text);border-color:var(--cream-text);color:var(--dark)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(232,227,216,.08)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:rgba(232,227,216,.08)}
 .wcard{background:var(--dark2);cursor:pointer;overflow:hidden;transition:background .18s;display:flex;flex-direction:column;position:relative}
 .wcard:hover{background:var(--dark3)}
 .wcard-thumb{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:2.4rem;transition:transform .28s}
@@ -159,7 +159,7 @@ canvas#pc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .m-close{margin-left:auto}
 
 @media(max-width:680px){
-  .grid{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
   .about-grid{grid-template-columns:1fr}
   .form-grid{grid-template-columns:1fr}
   .log-item{grid-template-columns:1fr;gap:.3rem}
@@ -190,10 +190,7 @@ canvas#pc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
     <div class="hero-eyebrow">场景 · 特效 · 着色 · 学习</div>
     <h1 class="hero-title">用光与色彩<br>构建<em>想象中的世界</em></h1>
     <p class="hero-sub">记录场景设计、特效制作与着色研究的探索过程——从完整作品到学习笔记，都在这里。</p>
-    <div class="hero-actions">
-      <button class="btn btn-p" onclick="document.getElementById('works').scrollIntoView({behavior:'smooth'})">浏览作品</button>
-      <button class="btn btn-o" onclick="document.getElementById('study').scrollIntoView({behavior:'smooth'})">学习记录</button>
-    </div>
+
   </div></div>
 </section>
 
@@ -541,13 +538,31 @@ document.getElementById('dsub').addEventListener('click',()=>{
 });
 
 document.getElementById('fsub').addEventListener('click',()=>{
-  if(!document.getElementById('fn').value.trim()||!document.getElementById('fe').value.trim())return;
-  document.getElementById('cform').style.display='none';
-  document.getElementById('fok').style.display='block';
+  const name=document.getElementById('fn').value.trim();
+  const email=document.getElementById('fe').value.trim();
+  const topic=document.getElementById('ft').value;
+  const msg=document.getElementById('fm').value.trim();
+  if(!name||!email||!msg)return;
+  const btn=document.getElementById('fsub');
+  btn.textContent='发送中…';btn.disabled=true;
+  emailjs.send('service_tfrhn4a','template_xa9s8jc',{
+    name:name,
+    email:email,
+    title:topic,
+    message:msg,
+  }).then(()=>{
+    document.getElementById('cform').style.display='none';
+    document.getElementById('fok').style.display='block';
+  }).catch(()=>{
+    btn.textContent='发送消息';btn.disabled=false;
+    alert('发送失败，请稍后重试。');
+  });
 });
 
 renderWorks();
 renderStudy();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('INxYNMWVAzS4tD2Uz');</script>
 </body>
 </html>
