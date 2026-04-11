@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Log — 场景 · 特效 · 着色 · 学习</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#f5f2eb;
+  --dark:#4a4840;
+  --dark2:#504e46;
+  --dark3:#56534a;
+  --ink:#1e1c18;
+  --ink2:#58544c;
+  --ink3:#a09880;
+  --cream-text:#e8e3d8;
+  --cream-muted:#9e9a90;
+  --sage:#7a9e87;
+  --sage-bg:rgba(122,158,135,.12);
+  --rule-light:rgba(30,26,20,.09);
+  --rule-dark:rgba(232,227,216,.10);
+  --serif:'Lora',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--cream);font-family:var(--sans);font-size:14px;color:var(--ink);margin:0}
+
+/* NAV */
+.nav{background:var(--dark);padding:.9rem 2rem;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(232,227,216,.07)}
+.nav-i{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--cream-text);letter-spacing:.01em;text-decoration:none}
+.nav-links{display:flex;gap:1.75rem;align-items:center}
+.nav-links a{font-size:12px;color:var(--cream-muted);text-decoration:none;transition:color .15s}
+.nav-links a:hover{color:var(--cream-text)}
+.nav-cta{font-size:11px;font-weight:500;background:var(--cream-text);color:var(--dark)!important;padding:5px 14px;border-radius:100px;transition:background .15s!important}
+.nav-cta:hover{background:#fff!important}
+
+.inner{max-width:960px;margin:0 auto}
+.sl{background:var(--cream);padding:5rem 2rem}
+.sd{background:var(--dark);padding:3.5rem 2rem;position:relative}
+.sd::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.022'/%3E%3C/svg%3E")}
+
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.75rem}
+.eyebrow.l{color:var(--sage)}.eyebrow.d{color:var(--cream-muted)}
+.sec-title{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;line-height:1.25;margin-bottom:1.5rem}
+.sec-title.l{color:var(--ink);font-size:clamp(1.4rem,2.8vw,1.9rem)}
+.sec-title.d{color:var(--cream-text);font-size:1.25rem;margin-bottom:1.25rem}
+
+/* HERO */
+.hero{background:var(--cream);padding:6.5rem 2rem 5.5rem;position:relative;overflow:hidden;min-height:460px;display:flex;align-items:center}
+canvas#pc{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero-inner{position:relative;z-index:2;max-width:660px;width:100%}
+.hero-eyebrow{display:inline-block;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);background:var(--sage-bg);padding:3px 14px;border-radius:100px;margin-bottom:1.3rem;border:1px solid rgba(122,158,135,.18)}
+.hero-title{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,4.2vw,3rem);line-height:1.2;letter-spacing:-.025em;color:var(--ink);margin-bottom:1.2rem}
+.hero-title em{font-style:italic;color:var(--sage)}
+.hero-sub{font-size:15px;color:var(--ink2);line-height:1.85;max-width:460px;margin-bottom:2.25rem;font-weight:300}
+.hero-actions{display:flex;gap:.7rem;flex-wrap:wrap}
+.btn{padding:9px 22px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;border:none;font-family:var(--sans);transition:all .18s}
+.btn-p{background:var(--ink);color:var(--cream)}.btn-p:hover{background:#333}
+.btn-o{background:transparent;color:var(--ink2);border:1.5px solid #ccc9c0}.btn-o:hover{border-color:#a09880;color:var(--ink)}
+
+/* WORKS */
+.filter-row{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.75rem;align-items:center}
+.fp{font-size:11px;padding:4px 13px;border-radius:100px;background:transparent;border:1px solid rgba(232,227,216,.18);color:var(--cream-muted);cursor:pointer;font-family:var(--sans);transition:all .15s}
+.fp:hover{border-color:rgba(232,227,216,.42);color:var(--cream-text)}
+.fp.on{background:var(--cream-text);border-color:var(--cream-text);color:var(--dark)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(232,227,216,.08)}
+.wcard{background:var(--dark2);cursor:pointer;overflow:hidden;transition:background .18s;display:flex;flex-direction:column;position:relative}
+.wcard:hover{background:var(--dark3)}
+.wcard-thumb{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:2.4rem;transition:transform .28s}
+.wcard:hover .wcard-thumb{transform:scale(1.05)}
+.wcard-info{padding:.6rem .8rem;border-top:1px solid rgba(232,227,216,.07)}
+.wcard-type{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-muted);margin-bottom:.15rem}
+.wcard-title{font-family:var(--serif);font-size:.82rem;font-weight:500;color:var(--cream-text);line-height:1.3}
+.wcard-badge{position:absolute;top:8px;right:8px;font-size:9px;font-weight:500;padding:2px 7px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase}
+.bs{background:rgba(122,158,135,.25);color:#9dc4aa}
+.bv{background:rgba(200,150,100,.22);color:#c8a878}
+.bc{background:rgba(160,140,190,.22);color:#b8a0cc}
+.bd{background:rgba(140,160,180,.22);color:#9ab0c4}
+.bk{background:rgba(180,165,130,.22);color:#c0aa80}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;align-items:start}
+.about-avatar{aspect-ratio:1;border-radius:4px;background:#edeae2;display:flex;align-items:center;justify-content:center;font-size:4rem;border:1px solid var(--rule-light)}
+.about-body{font-size:13.5px;color:var(--ink2);line-height:1.85;margin:.85rem 0 1.1rem}
+.skill-list{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem}
+.sk{font-size:11px;padding:3px 10px;border-radius:3px;background:#edeae2;color:var(--ink2)}
+
+/* STUDY */
+.log-item{display:grid;grid-template-columns:80px 1fr;gap:1.25rem;padding:1.1rem 0;border-bottom:1px solid var(--rule-dark);align-items:start}
+.log-item:first-child{border-top:1px solid var(--rule-dark)}
+.log-date{font-size:11px;color:var(--cream-muted);padding-top:.1rem}
+.log-title{font-family:var(--serif);font-size:.92rem;font-weight:500;color:var(--cream-text);margin-bottom:.25rem;cursor:pointer;transition:color .15s}
+.log-title:hover{color:#d8d2c4}
+.log-desc{font-size:12.5px;color:var(--cream-muted);line-height:1.68;margin-bottom:.45rem}
+.log-tags{display:flex;flex-wrap:wrap;gap:.28rem}
+.lt{font-size:10px;padding:2px 7px;border-radius:3px;background:rgba(232,227,216,.07);color:var(--cream-muted)}
+
+/* CONTACT */
+.contact-wrap{max-width:500px}
+.contact-desc{font-size:13.5px;color:var(--ink2);line-height:1.85;margin:.85rem 0 1.75rem;max-width:420px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem}
+.fg{display:flex;flex-direction:column;gap:.28rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:10px;font-weight:500;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase}
+.fg input,.fg textarea,.fg select{font-family:var(--sans);font-size:13px;padding:8px 11px;background:var(--cream);border:1px solid #d0ccc4;border-radius:4px;color:var(--ink);outline:none;transition:border-color .15s}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--sage)}
+.fg textarea{resize:vertical;min-height:84px}
+.fg select option{background:var(--cream)}
+.form-submit{margin-top:.2rem;padding:9px 26px;background:var(--ink);color:var(--cream);border:none;border-radius:100px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;transition:background .15s}
+.form-submit:hover{background:#333}
+.form-ok{display:none;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--sage);margin-top:1.25rem}
+
+/* FOOTER */
+.footer{background:var(--dark);padding:1.75rem 2rem;border-top:1px solid rgba(232,227,216,.07)}
+.footer-i{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.footer-logo{font-family:var(--serif);font-size:13px;color:var(--cream-muted)}
+.footer-links{display:flex;gap:1.5rem}
+.footer-links a{font-size:11px;color:var(--cream-muted);text-decoration:none;transition:color .15s}
+.footer-links a:hover{color:var(--cream-text)}
+
+/* FAB */
+.fab-wrap{position:fixed;bottom:1.75rem;right:1.75rem;z-index:200}
+.fab{width:42px;height:42px;border-radius:50%;background:var(--dark);color:var(--cream-text);border:1px solid rgba(232,227,216,.2);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.15);transition:transform .15s}
+.fab:hover{transform:scale(1.08)}
+.drawer{position:absolute;bottom:52px;right:0;width:280px;background:var(--cream);border:1px solid #ccc9c0;border-radius:8px;padding:1rem;box-shadow:0 8px 24px rgba(0,0,0,.1);transform:scale(.92) translateY(6px);transform-origin:bottom right;opacity:0;pointer-events:none;transition:all .18s}
+.drawer.open{transform:scale(1) translateY(0);opacity:1;pointer-events:all}
+.drawer-title{font-family:var(--serif);font-size:13px;font-weight:500;margin-bottom:.8rem;padding-bottom:.6rem;border-bottom:1px solid var(--rule-light)}
+.drawer label{font-size:10px;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.2rem}
+.drawer input,.drawer select,.drawer textarea{width:100%;font-family:var(--sans);font-size:12px;padding:6px 9px;background:#edeae2;border:1px solid #ccc9c0;border-radius:4px;color:var(--ink);outline:none;margin-bottom:.5rem;transition:border-color .15s}
+.drawer input:focus,.drawer select:focus,.drawer textarea:focus{border-color:var(--sage)}
+.drawer textarea{resize:vertical;min-height:50px}
+.drawer-sub{width:100%;padding:7px;background:var(--ink);color:var(--cream);border:none;border-radius:100px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer}
+
+/* MODAL */
+.mwrap{position:fixed;inset:0;z-index:300;background:rgba(40,38,32,.6);display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity .2s;overflow-y:auto}
+.mwrap.open{opacity:1;pointer-events:all}
+.modal{background:var(--cream);border-radius:8px;max-width:560px;width:100%;max-height:86vh;overflow-y:auto;transform:translateY(8px);transition:transform .2s;box-shadow:0 20px 56px rgba(0,0,0,.18)}
+.mwrap.open .modal{transform:translateY(0)}
+.modal-cover{width:100%;aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;font-size:4.5rem;border-radius:8px 8px 0 0;overflow:hidden}
+.modal-body{padding:1.4rem 1.6rem 1.6rem}
+.modal-meta{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.45rem}
+.modal-title{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:.7rem;letter-spacing:-.015em}
+.modal-desc{font-size:13px;color:var(--ink2);line-height:1.8;margin-bottom:1rem}
+.mbl{margin-bottom:.85rem}
+.mbl-label{font-size:10px;font-weight:500;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.35rem}
+.mtags{display:flex;flex-wrap:wrap;gap:.3rem}
+.mt{font-size:11px;padding:2px 8px;border-radius:3px;background:#edeae2;color:var(--ink2)}
+.mnote{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--ink2);line-height:1.75;padding:.75rem .95rem;background:#f0ede4;border-radius:4px;border-left:2px solid var(--sage)}
+.modal-actions{display:flex;gap:.45rem;margin-top:1.1rem;padding-top:1rem;border-top:1px solid var(--rule-light)}
+.m-ask{flex:1;padding:8px;border-radius:100px;background:var(--ink);color:var(--cream);border:none;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer}
+.m-del,.m-close{padding:8px 14px;border-radius:100px;background:transparent;color:var(--ink3);border:1px solid #d0ccc4;font-family:var(--sans);font-size:12px;cursor:pointer;transition:all .15s}
+.m-del:hover,.m-close:hover{color:var(--ink);border-color:#a09880}
+.m-close{margin-left:auto}
+
+@media(max-width:680px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .about-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .log-item{grid-template-columns:1fr;gap:.3rem}
+  .nav-links{gap:1rem}
+  .hero{padding:4rem 1.5rem 3.5rem}
+  .sl,.sd{padding:3.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-i">
+    <a class="nav-logo" href="#top">Studio Log</a>
+    <div class="nav-links">
+      <a href="#works">作品</a>
+      <a href="#about">关于</a>
+      <a href="#study">学习</a>
+      <a href="#contact" class="nav-cta">联系</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <canvas id="pc"></canvas>
+  <div class="inner"><div class="hero-inner">
+    <div class="hero-eyebrow">场景 · 特效 · 着色 · 学习</div>
+    <h1 class="hero-title">用光与色彩<br>构建<em>想象中的世界</em></h1>
+    <p class="hero-sub">记录场景设计、特效制作与着色研究的探索过程——从完整作品到学习笔记，都在这里。</p>
+    <div class="hero-actions">
+      <button class="btn btn-p" onclick="document.getElementById('works').scrollIntoView({behavior:'smooth'})">浏览作品</button>
+      <button class="btn btn-o" onclick="document.getElementById('study').scrollIntoView({behavior:'smooth'})">学习记录</button>
+    </div>
+  </div></div>
+</section>
+
+<!-- WORKS -->
+<section class="sd" id="works">
+  <div class="inner" style="position:relative;z-index:1">
+    <div style="margin-bottom:1.1rem">
+      <div class="eyebrow d">Portfolio</div>
+      <div class="sec-title d">精选作品</div>
+    </div>
+    <div class="filter-row" id="fr">
+      <button class="fp on" data-f="all">全部</button>
+      <button class="fp" data-f="scene">场景</button>
+      <button class="fp" data-f="vfx">特效</button>
+      <button class="fp" data-f="color">着色</button>
+      <button class="fp" data-f="concept">草图</button>
+      <span style="margin-left:auto;font-size:11px;color:var(--cream-muted)" id="wcount"></span>
+    </div>
+    <div class="grid" id="wgrid"></div>
+    <p style="margin-top:1.5rem;font-size:12.5px;color:var(--cream-muted)">
+      场景设计、着色效果、特效实验等。
+      <span style="color:var(--sage);cursor:pointer;text-decoration:underline;text-underline-offset:3px"
+        onclick="document.getElementById('study').scrollIntoView({behavior:'smooth'})"> 查看学习记录 →</span>
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sl" id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div class="about-avatar">🦉</div>
+      <div>
+        <div class="eyebrow l">About</div>
+        <h2 class="sec-title l">热爱光影，<br><em style="font-style:italic;color:var(--sage)">相信细节即诗意</em></h2>
+        <p class="about-body">我专注于实时渲染与离线渲染的技法研究，尤其迷恋体积光、程序化材质和粒子特效带来的视觉层次感。每一件作品都是对「如何让虚拟世界更可信」这个问题的一次作答。</p>
+        <div class="skill-list">
+          <span class="sk">Blender</span><span class="sk">Unity URP</span><span class="sk">Shader Graph</span>
+          <span class="sk">Substance Painter</span><span class="sk">Houdini</span><span class="sk">体积渲染</span><span class="sk">粒子系统</span>
+        </div>
+        <button class="btn btn-o" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">联系我</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STUDY -->
+<section class="sd" id="study">
+  <div class="inner" style="position:relative;z-index:1">
+    <div class="eyebrow d">Study Log</div>
+    <div class="sec-title d">学习记录</div>
+    <p style="font-size:13px;color:var(--cream-muted);margin-top:-.5rem;margin-bottom:0;max-width:460px">拆解、实验、整理——把每次学习过程变成可回顾的笔记。</p>
+    <div id="llist"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sl" id="contact">
+  <div class="inner">
+    <div class="contact-wrap">
+      <div class="eyebrow l">Contact</div>
+      <h2 class="sec-title l">联系我</h2>
+      <p class="contact-desc">有任何关于作品的想法、合作意向，或者只是想交流技术细节，都欢迎留言。</p>
+      <div id="cform">
+        <div class="form-grid">
+          <div class="fg"><label>姓名</label><input id="fn" type="text" placeholder="你的名字"></div>
+          <div class="fg"><label>邮箱</label><input id="fe" type="email" placeholder="email@example.com"></div>
+          <div class="fg full"><label>主题</label>
+            <select id="ft"><option>请选择……</option><option>场景设计交流</option><option>特效技术探讨</option><option>着色研究</option><option>合作项目</option><option>其他</option></select>
+          </div>
+          <div class="fg full"><label>消息</label><textarea id="fm" placeholder="写下你想说的……"></textarea></div>
+        </div>
+        <button class="form-submit" id="fsub">发送消息</button>
+      </div>
+      <div class="form-ok" id="fok">✉ 消息已发送，期待与你的交流。</div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-i">
+    <div class="footer-logo">Studio Log</div>
+    <div class="footer-links">
+      <a href="#top">顶部</a><a href="#works">作品</a>
+      <a href="#study">学习</a><a href="#contact">联系</a>
+    </div>
+    <div style="font-size:11px;color:var(--cream-muted)">© <span id="yr"></span></div>
+  </div>
+</footer>
+
+<!-- FAB -->
+<div class="fab-wrap">
+  <div class="drawer" id="drw">
+    <div class="drawer-title">添加作品 / 学习记录</div>
+    <label>标题</label><input id="dt" type="text" placeholder="作品名称">
+    <label>类型</label>
+    <select id="dy">
+      <option value="scene">场景设计</option><option value="vfx">特效制作</option>
+      <option value="color">着色效果</option><option value="study">学习案例</option>
+      <option value="concept">概念草图</option>
+    </select>
+    <label>简介</label><textarea id="dd" placeholder="描述内容…"></textarea>
+    <label>标签（逗号分隔）</label><input id="dg" type="text" placeholder="Blender, 体积光">
+    <label>完成度 %</label><input id="dp" type="number" min="0" max="100" value="100">
+    <button class="drawer-sub" id="dsub">添加</button>
+  </div>
+  <button class="fab" id="fab">+</button>
+</div>
+
+<!-- MODAL -->
+<div class="mwrap" id="mwrap">
+  <div class="modal">
+    <div class="modal-cover" id="mcover"></div>
+    <div class="modal-body">
+      <div class="modal-meta" id="mmeta"></div>
+      <div class="modal-title" id="mtitle"></div>
+      <div class="modal-desc" id="mdesc"></div>
+      <div class="mbl"><div class="mbl-label">技术标签</div><div class="mtags" id="mtags"></div></div>
+      <div class="mbl" id="mnotebl"><div class="mbl-label">心得笔记</div><div class="mnote" id="mnote"></div></div>
+      <div class="modal-actions">
+        <button class="m-del" id="mdel">移除</button>
+        <button class="m-close" id="mclose">关闭</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ── PENCIL SKETCH ANIMATION ──
+(function(){
+  const cv=document.getElementById('pc'),cx=cv.getContext('2d');
+  const PI2=Math.PI*2,rnd=(a,b)=>a+Math.random()*(b-a);
+  function resize(){cv.width=cv.parentElement.offsetWidth;cv.height=cv.parentElement.offsetHeight;}
+  resize();window.addEventListener('resize',()=>{resize();init();});
+  const COLS=[[80,72,58],[100,90,72],[60,80,70],[90,85,75],[110,95,68]];
+  const MAX=12;let strokes=[],t=0;
+  function mk(){
+    const W=cv.width,H=cv.height,col=COLS[Math.floor(Math.random()*COLS.length)];
+    const z=Math.random();let x0,y0;
+    if(z<.28){x0=rnd(0,W*.2);y0=rnd(0,H);}
+    else if(z<.56){x0=rnd(W*.8,W);y0=rnd(0,H);}
+    else if(z<.72){x0=rnd(0,W);y0=rnd(0,H*.18);}
+    else if(z<.88){x0=rnd(0,W);y0=rnd(H*.82,H);}
+    else{x0=rnd(W*.1,W*.9);y0=rnd(H*.1,H*.9);}
+    const ang=rnd(0,PI2),len=rnd(50,200),cv2=rnd(-.35,.35),perp=ang+Math.PI/2;
+    const hc=Math.random()<.32?Math.floor(rnd(1,4)):0;
+    return{x0,y0,x3:x0+Math.cos(ang)*len,y3:y0+Math.sin(ang)*len,
+      cx1:x0+Math.cos(ang)*len*.3+Math.cos(perp)*len*cv2*.5,
+      cy1:y0+Math.sin(ang)*len*.3+Math.sin(perp)*len*cv2*.5,
+      cx2:x0+Math.cos(ang)*len*.7+Math.cos(perp)*len*cv2*.3,
+      cy2:y0+Math.sin(ang)*len*.7+Math.sin(perp)*len*cv2*.3,
+      col,w:rnd(.3,1.1),maxA:rnd(.035,.11),gs:rnd(.004,.012),
+      prog:0,alpha:0,state:'grow',bp:rnd(0,PI2),bs:rnd(.008,.018),
+      bt:0,fs:rnd(.0015,.004),hc,hg:rnd(1.8,5),
+      px:Math.cos(perp),py:Math.sin(perp),delay:0,age:0};
+  }
+  function cp(x0,y0,x1,y1,x2,y2,x3,y3,t){
+    const m=1-t;
+    return[m*m*m*x0+3*m*m*t*x1+3*m*t*t*x2+t*t*t*x3,
+           m*m*m*y0+3*m*m*t*y1+3*m*t*t*y2+t*t*t*y3];
+  }
+  function ds(s,alpha,prog){
+    if(alpha<=.002)return;
+    for(let h=-Math.floor(s.hc/2);h<=Math.ceil(s.hc/2);h++){
+      const ox=s.px*h*s.hg,oy=s.py*h*s.hg,ha=h===0?alpha:alpha*rnd(.3,.65);
+      cx.beginPath();
+      const[sx,sy]=cp(s.x0,s.y0,s.cx1,s.cy1,s.cx2,s.cy2,s.x3,s.y3,0);
+      cx.moveTo(sx+ox,sy+oy);
+      for(let i=1;i<=28;i++){
+        const f=(i/28)*prog,j=s.w*.4;
+        const[px,py]=cp(s.x0,s.y0,s.cx1,s.cy1,s.cx2,s.cy2,s.x3,s.y3,f);
+        cx.lineTo(px+ox+rnd(-j,j),py+oy+rnd(-j,j));
+      }
+      cx.strokeStyle=`rgba(${s.col[0]},${s.col[1]},${s.col[2]},${ha})`;
+      cx.lineWidth=s.w*(h===0?1:.6);cx.lineCap='round';cx.lineJoin='round';cx.stroke();
+    }
+  }
+  function init(){strokes=[];for(let i=0;i<MAX;i++){const s=mk();s.delay=i*24;strokes.push(s);}t=0;}
+  init();
+  function frame(){
+    cx.clearRect(0,0,cv.width,cv.height);t++;
+    for(const s of strokes){
+      s.age++;if(s.age<s.delay)continue;
+      if(s.state==='grow'){
+        s.prog=Math.min(1,s.prog+s.gs);s.alpha=s.maxA*s.prog;
+        if(s.prog>=1){s.state='breathe';s.bt=rnd(180,500);}
+        ds(s,s.alpha,s.prog);
+      }else if(s.state==='breathe'){
+        s.bp+=s.bs;s.bt--;s.alpha=s.maxA*(0.72+0.28*Math.sin(s.bp));
+        if(s.bt<=0)s.state='fade';ds(s,s.alpha,1);
+      }else{
+        s.alpha=Math.max(0,s.alpha-s.fs);ds(s,s.alpha,1);
+        if(s.alpha<=0){Object.assign(s,mk());s.delay=0;s.age=0;}
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// ── DATA ──
+const BG={
+  scene:['linear-gradient(135deg,#3a4840,#4a5e52)','linear-gradient(135deg,#3a4838,#4a5e48)'],
+  vfx:['linear-gradient(135deg,#4a3828,#5e4838)','linear-gradient(135deg,#38304a,#483e5e)'],
+  color:['linear-gradient(135deg,#483848,#5a4858)','linear-gradient(135deg,#384050,#485060)'],
+  study:['linear-gradient(135deg,#384038,#485248)','linear-gradient(135deg,#404038,#525248)'],
+  concept:['linear-gradient(135deg,#403828,#504838)','linear-gradient(135deg,#383848,#484858)'],
+};
+const EMO={
+  scene:['🌆','🏔️','🌄','🌊','🌿','🏙️'],
+  vfx:['✨','💥','🔥','⚡','🌀','💫'],
+  color:['🎨','🌸','🍂','🌈','💜','🌅'],
+  study:['📖','💡','🧩','📐','✏️','🧠'],
+  concept:['🖊️','📝','🔮','🌙','⭕','🌀'],
+};
+const TL={scene:'场景设计',vfx:'特效制作',color:'着色效果',study:'学习案例',concept:'概念草图'};
+const BC={scene:'bs',vfx:'bv',color:'bc',study:'bd',concept:'bk'};
+const NOTES={
+  scene:'场景中的光影设计最具挑战性，体积光与环境光的配合决定了整体氛围。',
+  vfx:'粒子参数的调试需要大量迭代，每次微小的改变都会对视觉效果产生深远影响。',
+  color:'色温的冷暖对比是塑造画面情绪的关键，饱和度需根据整体调性调整。',
+  study:'拆解优秀案例并将其转化为自己的工作流程，是提升最快的路径。',
+  concept:'草图阶段不拘泥于细节，快速捕捉空间感与构图关系，后期再深化。',
+};
+const r = a => a[Math.floor(Math.random()*a.length)];
+
+// ── 在这里编辑你的作品数据 ──
+let works = [
+  {id:1,title:'黄昏废墟城市',type:'scene',desc:'以战后余晖为主题，利用体积光穿透建筑缝隙营造末日诗意感。层叠的雾气与粒子灰尘构成画面纵深，几何节点批量生成建筑碎块。',tags:['Blender','体积光','几何节点','粒子'],prog:100,date:'2025-03-15'},
+  {id:2,title:'深海生物发光特效',type:'vfx',desc:'模拟深海生物的生物发光效果，使用 Shader Nodes 实现脉冲式光芒散射，粒子系统控制发光孢子的轨迹与消散。',tags:['Shader Nodes','EEVEE','粒子系统'],prog:90,date:'2025-02-28'},
+  {id:3,title:'秋日木屋 PBR 着色',type:'color',desc:'参考真实摄影重建 PBR 材质，重点研究木材纹理与苔藓的混合方式，以及 Roughness/AO 的手工绘制技法。',tags:['PBR','Substance','Cycles'],prog:100,date:'2025-01-20'},
+  {id:4,title:'熔岩流动流体特效',type:'vfx',desc:'流体模拟与自发光着色器结合，实现具有温度感的熔岩动态效果。渲染时间优化后单帧缩短约 40%。',tags:['Mantaflow','自发光','优化'],prog:85,date:'2025-03-01'},
+  {id:5,title:'日式庭院极简场景',type:'scene',desc:'探索极简美学与写实渲染的平衡点。砂砾纹路几何节点程序生成，石灯笼材质手工绘制，整体光照偏散射冷白。',tags:['几何节点','和风','手绘贴图'],prog:100,date:'2024-11-18'},
+  {id:6,title:'程序化星云纹理实验',type:'concept',desc:'用 Noise + Color Ramp 节点构建程序化星云，实验不同色彩组合的视觉张力，记录最佳参数组合。',tags:['程序纹理','Shader Graph'],prog:60,date:'2025-01-05'},
+  {id:7,title:'体积云日落场景',type:'scene',desc:'基于 Cycles 体积着色器构建大气散射效果，模拟日落时分光线穿越云层的丁达尔效应。',tags:['体积着色','Cycles','大气散射'],prog:100,date:'2024-10-20'},
+  {id:8,title:'全息卡牌着色效果',type:'color',desc:'复现全息箔效果，使用法线偏移与虹彩着色器实现随视角变化的彩虹光泽，参考真实集换式卡牌。',tags:['虹彩','法线偏移','URP'],prog:75,date:'2024-09-12'},
+];
+
+// ── 在这里编辑你的学习记录 ──
+const studies = [
+  {id:101,title:'三点布光角色渲染拆解',desc:'拆解好莱坞级别角色渲染流程，深入理解三点布光与 HDRI 的联动关系，整理了详细参数记录与对比截图。',tags:['三点布光','HDRI','Cycles'],date:'2024-12-10',note:'主光与补光的强度比是塑造角色立体感的核心，4:1 的比例是经典起点，再根据情绪做调整。'},
+  {id:102,title:'Shader Nodes 核心节点整理',desc:'系统整理 Blender Shader Nodes 30+ 个核心节点的用途与典型参数，配合实际效果截图，持续维护中。',tags:['Shader Nodes','Blender','入门'],date:'2024-10-05',note:'Noise Texture 配合 Color Ramp 是最万能的组合，掌握它之后 80% 的材质问题都可以解决。'},
+  {id:103,title:'Houdini 体积特效入门',desc:'从零开始学习 Houdini 的 Volume 工作流，制作云雾和爆炸基础案例，记录了 VDB 导出到 Blender 的完整流程。',tags:['Houdini','VDB','体积特效'],date:'2025-02-10',note:'Houdini 最难的不是节点本身，而是理解「数据在节点之间如何流动」这个思维模型。'},
+];
+
+works.forEach(w=>{w.emoji=w.emoji||r(EMO[w.type]);w.bg=w.bg||r(BG[w.type]);w.note=NOTES[w.type];});
+studies.forEach(s=>{s.emoji=r(EMO.study);s.bg=r(BG.study);});
+let nid=200, filter='all';
+
+function fmt(d){
+  const dt=new Date(d);
+  return`${dt.getFullYear()}.${String(dt.getMonth()+1).padStart(2,'0')}.${String(dt.getDate()).padStart(2,'0')}`;
+}
+
+function renderWorks(){
+  const list=(filter==='all'?works:works.filter(w=>w.type===filter))
+    .sort((a,b)=>new Date(b.date)-new Date(a.date));
+  document.getElementById('wcount').textContent=list.length+' 件';
+  const g=document.getElementById('wgrid');g.innerHTML='';
+  list.forEach(w=>{
+    const d=document.createElement('div');d.className='wcard';
+    d.innerHTML=`<div class="wcard-thumb" style="background:${w.bg}">${w.emoji}
+      <span class="wcard-badge ${BC[w.type]}">${TL[w.type]}</span></div>
+      <div class="wcard-info"><div class="wcard-type">${fmt(w.date)}</div>
+      <div class="wcard-title">${w.title}</div></div>`;
+    d.addEventListener('click',()=>openModal(w));
+    g.appendChild(d);
+  });
+}
+
+function renderStudy(){
+  const el=document.getElementById('llist');el.innerHTML='';
+  studies.forEach(s=>{
+    const li=document.createElement('div');li.className='log-item';
+    li.innerHTML=`<div class="log-date">${fmt(s.date)}</div>
+      <div><div class="log-title">${s.title}</div>
+      <div class="log-desc">${s.desc}</div>
+      <div class="log-tags">${s.tags.map(t=>`<span class="lt">${t}</span>`).join('')}</div></div>`;
+    li.querySelector('.log-title').addEventListener('click',()=>
+      openModal({...s,type:'study',prog:100,bg:r(BG.study),emoji:r(EMO.study),note:s.note}));
+    el.appendChild(li);
+  });
+}
+
+function openModal(w){
+  const mc=document.getElementById('mcover');
+  mc.style.background=w.bg;mc.textContent=w.emoji;mc.style.fontSize='4.2rem';
+  document.getElementById('mtitle').textContent=w.title;
+  const dt=new Date(w.date);
+  document.getElementById('mmeta').innerHTML=
+    `<span class="wcard-badge ${BC[w.type]||'bd'}" style="position:static">${TL[w.type]||'学习案例'}</span>
+     <span class="mt">${dt.getFullYear()}年${dt.getMonth()+1}月</span>
+     ${w.prog<100?`<span class="mt">${w.prog}% 完成</span>`:'<span class="mt">已完成</span>'}`;
+  document.getElementById('mdesc').textContent=w.desc;
+  document.getElementById('mtags').innerHTML=(w.tags||[]).map(t=>`<span class="mt">${t}</span>`).join('');
+  const nb=document.getElementById('mnotebl');
+  if(w.note){nb.style.display='';document.getElementById('mnote').textContent=w.note;}
+  else nb.style.display='none';
+  document.getElementById('mdel').onclick=()=>{
+    works=works.filter(x=>x.id!==w.id);
+    document.getElementById('mwrap').classList.remove('open');
+    renderWorks();
+  };
+  document.getElementById('mwrap').classList.add('open');
+}
+
+document.getElementById('mclose').onclick=()=>document.getElementById('mwrap').classList.remove('open');
+document.getElementById('mwrap').addEventListener('click',e=>{
+  if(e.target===document.getElementById('mwrap'))document.getElementById('mwrap').classList.remove('open');
+});
+
+document.getElementById('fr').addEventListener('click',e=>{
+  const b=e.target.closest('.fp');if(!b)return;
+  document.querySelectorAll('.fp').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  filter=b.dataset.f;renderWorks();
+});
+
+const fab=document.getElementById('fab'),drw=document.getElementById('drw');
+fab.addEventListener('click',e=>{
+  e.stopPropagation();drw.classList.toggle('open');
+  fab.textContent=drw.classList.contains('open')?'×':'+';
+});
+document.addEventListener('click',e=>{
+  if(!drw.contains(e.target)&&e.target!==fab){drw.classList.remove('open');fab.textContent='+';}
+});
+
+document.getElementById('dsub').addEventListener('click',()=>{
+  const title=document.getElementById('dt').value.trim();if(!title)return;
+  const type=document.getElementById('dy').value;
+  const desc=document.getElementById('dd').value.trim()||'暂无描述';
+  const tags=document.getElementById('dg').value.split(/[,，]/).map(t=>t.trim()).filter(Boolean);
+  const prog=Math.min(100,Math.max(0,parseInt(document.getElementById('dp').value)||100));
+  works.unshift({id:nid++,title,type,desc,tags,prog,
+    date:new Date().toISOString().split('T')[0],
+    emoji:r(EMO[type]||EMO.scene),bg:r(BG[type]||BG.scene),note:NOTES[type]||''});
+  ['dt','dd','dg'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('dp').value='100';
+  drw.classList.remove('open');fab.textContent='+';
+  filter='all';
+  document.querySelectorAll('.fp').forEach((b,i)=>b.classList.toggle('on',i===0));
+  renderWorks();
+});
+
+document.getElementById('fsub').addEventListener('click',()=>{
+  if(!document.getElementById('fn').value.trim()||!document.getElementById('fe').value.trim())return;
+  document.getElementById('cform').style.display='none';
+  document.getElementById('fok').style.display='block';
+});
+
+renderWorks();
+renderStudy();
+</script>
+</body>
+</html>
