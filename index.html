@@ -397,12 +397,13 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 
 // ── DATA ──
+const THUMB_BG = '#3a3830';
 const BG={
-  scene:['linear-gradient(135deg,#3a4840,#4a5e52)','linear-gradient(135deg,#3a4838,#4a5e48)'],
-  vfx:['linear-gradient(135deg,#4a3828,#5e4838)','linear-gradient(135deg,#38304a,#483e5e)'],
-  color:['linear-gradient(135deg,#483848,#5a4858)','linear-gradient(135deg,#384050,#485060)'],
-  study:['linear-gradient(135deg,#384038,#485248)','linear-gradient(135deg,#404038,#525248)'],
-  concept:['linear-gradient(135deg,#403828,#504838)','linear-gradient(135deg,#383848,#484858)'],
+  scene:[THUMB_BG],
+  vfx:[THUMB_BG],
+  color:[THUMB_BG],
+  study:[THUMB_BG],
+  concept:[THUMB_BG],
 };
 const EMO={
   scene:['🌆','🏔️','🌄','🌊','🌿','🏙️'],
@@ -457,7 +458,7 @@ function renderWorks(){
   const g=document.getElementById('wgrid');g.innerHTML='';
   list.forEach(w=>{
     const d=document.createElement('div');d.className='wcard';
-    d.innerHTML=`<div class="wcard-thumb" style="background:${w.bg}">${w.emoji}
+    d.innerHTML=`<div class="wcard-thumb" style="background:${w.bg}">
       <span class="wcard-badge ${BC[w.type]}">${TL[w.type]}</span></div>
       <div class="wcard-info"><div class="wcard-type">${fmt(w.date)}</div>
       <div class="wcard-title">${w.title}</div></div>`;
@@ -482,7 +483,7 @@ function renderStudy(){
 
 function openModal(w){
   const mc=document.getElementById('mcover');
-  mc.style.background=w.bg;mc.textContent=w.emoji;mc.style.fontSize='4.2rem';
+  mc.style.background=w.bg;mc.textContent='';mc.style.fontSize='4.2rem';
   document.getElementById('mtitle').textContent=w.title;
   const dt=new Date(w.date);
   document.getElementById('mmeta').innerHTML=
