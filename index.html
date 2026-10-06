@@ -1,840 +1,545 @@
-<!DOCTYPE html><html lang="zh"><head>
-
-
+<!DOCTYPE html>
+<html lang="zh">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Studio Log — 风铃</title>
-<template id="__bundler_thumbnail" data-bg-color="#F5EFE4">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#F5EFE4"/>
-    <ellipse cx="800" cy="200" rx="320" ry="260" fill="oklch(0.75 0.22 280)" opacity="0.5"/>
-    <ellipse cx="200" cy="600" rx="280" ry="220" fill="oklch(0.78 0.22 55)" opacity="0.45"/>
-    <ellipse cx="550" cy="400" rx="200" ry="180" fill="oklch(0.78 0.18 170)" opacity="0.38"/>
-    <text x="120" y="380" font-family="serif" font-size="68" fill="#1C1510" opacity="0.85" font-weight="300">Wind Chimes</text>
-    <text x="120" y="440" font-family="sans-serif" font-size="22" fill="#1C1510" opacity="0.35" letter-spacing="6">STUDIO LOG</text>
-  </svg>
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#F5EFE4"/>
-    <ellipse cx="800" cy="200" rx="320" ry="260" fill="oklch(0.82 0.12 280)" opacity="0.35" filter="blur(60px)"/>
-    <ellipse cx="200" cy="600" rx="280" ry="220" fill="oklch(0.82 0.14 55)" opacity="0.32" filter="blur(60px)"/>
-    <ellipse cx="550" cy="400" rx="200" ry="180" fill="oklch(0.84 0.10 170)" opacity="0.25" filter="blur(55px)"/>
-    <!-- Wind chime icon -->
-    <line x1="600" y1="120" x2="600" y2="180" stroke="#1C1510" stroke-width="2" opacity="0.3"/>
-    <line x1="480" y1="180" x2="720" y2="180" stroke="#1C1510" stroke-width="2.5" opacity="0.35"/>
-    <line x1="480" y1="183" x2="483" y2="500" stroke="#1C1510" stroke-width="2" opacity="0.3"/>
-    <ellipse cx="481" cy="518" rx="14" ry="22" fill="oklch(0.80 0.14 55)" stroke="#1C1510" stroke-width="1.5" opacity="0.5"/>
-    <line x1="560" y1="183" x2="562" y2="420" stroke="#1C1510" stroke-width="2" opacity="0.3"/>
-    <ellipse cx="561" cy="438" rx="14" ry="22" fill="oklch(0.82 0.12 280)" stroke="#1C1510" stroke-width="1.5" opacity="0.5"/>
-    <line x1="600" y1="183" x2="603" y2="560" stroke="#1C1510" stroke-width="2.5" opacity="0.35"/>
-    <ellipse cx="601" cy="580" rx="17" ry="25" fill="oklch(0.80 0.14 340)" stroke="#1C1510" stroke-width="1.5" opacity="0.5"/>
-    <line x1="640" y1="183" x2="642" y2="450" stroke="#1C1510" stroke-width="2" opacity="0.3"/>
-    <ellipse cx="641" cy="468" rx="14" ry="22" fill="oklch(0.84 0.10 170)" stroke="#1C1510" stroke-width="1.5" opacity="0.5"/>
-    <line x1="720" y1="183" x2="721" y2="380" stroke="#1C1510" stroke-width="2" opacity="0.3"/>
-    <ellipse cx="720" cy="398" rx="14" ry="22" fill="oklch(0.86 0.10 95)" stroke="#1C1510" stroke-width="1.5" opacity="0.5"/>
-    <!-- Text -->
-    <text x="200" y="320" font-family="serif" font-size="72" fill="#1C1510" opacity="0.8" font-weight="300">风铃 Studio Log</text>
-    <text x="200" y="390" font-family="sans-serif" font-size="28" fill="#1C1510" opacity="0.4" letter-spacing="4">场景 · 特效 · 着色 · 学习</text>
-  </svg>
-</template>
+<meta name="description" content="风铃 Studio Log — 场景 · 特效 · 着色 · 学习">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;family=Noto+Serif+SC:wght@300;400;600;700&amp;family=Noto+Sans+SC:wght@300;400;500&amp;family=Syne:wght@400;700;800&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
+/* ═══════════ DRIFT — iOS dynamic-wallpaper inspired ═══════════ */
 :root {
-  --paper: #F5EFE4;
-  --paper-dark: #EDE4D3;
-  --ink: #1C1510;
-  --ink-light: rgba(28,21,16,0.5);
-  --ink-faint: rgba(28,21,16,0.15);
-  --wash-indigo: rgba(100,110,180,0.18);
-  --wash-amber: rgba(200,120,50,0.16);
-  --wash-teal: rgba(70,140,130,0.14);
-  --wash-rose: rgba(190,110,110,0.13);
-  --accent: #7A6B8A;
-  --accent-warm: #C4622A;
+  --bg: #14141b;
+  --bg2: #0d0d11;
+  --ink: #f5f5f8;
+  --ink-dim: rgba(245,245,248,0.66);
+  --ink-faint: rgba(245,245,248,0.38);
+  --stroke: rgba(255,255,255,0.10);
+  --stroke-soft: rgba(255,255,255,0.06);
+  --glass: rgba(255,255,255,0.055);
+  --glass-strong: rgba(23,23,29,0.55);
+  --violet: #9a75e8;
+  --cyan: #51d1e3;
+  --magenta: #df87eb;
+  --amber: #e4be59;
+  --coral: #eb8293;
+  --teal: #50dbcb;
+  --grad-text: linear-gradient(100deg, #ad97ee 0%, #7cdeea 45%, #f2afd5 90%);
+  --radius: 22px;
+  --font-latin: 'Space Grotesk', 'Noto Sans SC', sans-serif;
+  --font-cn: 'Noto Sans SC', 'Space Grotesk', sans-serif;
+  /* drift 可调参数 */
+  --d-size: 1;     /* 色块尺寸倍率 */
+  --d-blur: 1;     /* 模糊倍率 */
+  --d-op: 1;       /* 色彩浓度 */
+  --d-hue: 0deg;   /* 色相偏移 */
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--paper);
+  background: var(--bg);
   color: var(--ink);
-  font-family: 'Noto Serif SC', serif;
+  font-family: var(--font-cn);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
+::selection { background: rgba(154,117,232,0.45); }
+a { color: inherit; }
 
-/* ─── Paper texture overlay ─── */
-body::before {
-  content: '';
-  position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-  background-size: 200px 200px;
+/* ─── Drift background · iOS dynamic-wallpaper inspired (lite) ───
+   底色富渐变 + 大模糊色块 screen 混合 + 慢速漂移，无 canvas、无 JS */
+.drift {
+  position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; overflow: hidden;
+  background:
+    radial-gradient(110% 90% at 18% 0%, #2b2358 0%, transparent 55%),
+    radial-gradient(120% 100% at 88% 100%, #12333d 0%, transparent 55%),
+    radial-gradient(90% 70% at 85% 8%, #3a1f4d 0%, transparent 50%),
+    linear-gradient(165deg, #171722 0%, #101016 55%, #12141d 100%);
 }
-
-/* ─── iOS-style mesh gradient backgrounds ─── */
-.ios-bg {
-  position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0;
-}
-.ios-bg .blob {
+.drift .blob {
   position: absolute;
+  width: calc(58vmax * var(--d-size)); height: calc(58vmax * var(--d-size));
   border-radius: 50%;
-  filter: blur(80px);
+  filter: blur(calc(90px * var(--d-blur))); -webkit-filter: blur(calc(90px * var(--d-blur)));
+  mix-blend-mode: screen;
+  opacity: var(--d-op);
   will-change: transform;
 }
-.ios-bg-hero .b1 { width: 700px; height: 700px; top: -200px; right: -100px; background: radial-gradient(circle, oklch(0.72 0.18 280) 0%, transparent 70%); opacity: 0.55; }
-.ios-bg-hero .b2 { width: 600px; height: 500px; bottom: -100px; left: -150px; background: radial-gradient(circle, oklch(0.75 0.17 50) 0%, transparent 70%); opacity: 0.45; }
-.ios-bg-hero .b3 { width: 500px; height: 500px; top: 100px; left: 30%; background: radial-gradient(circle, oklch(0.78 0.14 170) 0%, transparent 70%); opacity: 0.35; }
-.ios-bg-hero .b4 { width: 400px; height: 400px; bottom: 0; right: 25%; background: radial-gradient(circle, oklch(0.70 0.20 340) 0%, transparent 70%); opacity: 0.3; }
-.ios-bg-hero .b5 { width: 300px; height: 300px; top: 40%; left: 15%; background: radial-gradient(circle, oklch(0.85 0.12 95) 0%, transparent 70%); opacity: 0.35; }
+.drift { filter: hue-rotate(var(--d-hue)); }
+.drift .px { position: absolute; inset: 0; will-change: transform; }
+.drift .blob.b1 { left: -14vmax; top: -16vmax;
+  background: radial-gradient(circle, rgba(154,117,232,0.85) 0%, rgba(154,117,232,0) 62%);
+  animation: drift1 26s ease-in-out infinite alternate; }
+.drift .blob.b2 { right: -16vmax; top: -10vmax;
+  background: radial-gradient(circle, rgba(81,209,227,0.70) 0%, rgba(81,209,227,0) 62%);
+  animation: drift2 22s ease-in-out infinite alternate; }
+.drift .blob.b3 { left: 22%; bottom: -22vmax;
+  background: radial-gradient(circle, rgba(223,135,235,0.75) 0%, rgba(223,135,235,0) 62%);
+  animation: drift3 30s ease-in-out infinite alternate; }
+.drift .blob.b4 { right: -8vmax; bottom: -14vmax;
+  background: radial-gradient(circle, rgba(80,219,203,0.60) 0%, rgba(80,219,203,0) 62%);
+  animation: drift4 20s ease-in-out infinite alternate; }
+.drift .blob.b5 { left: 30%; top: 24%; width: calc(44vmax * var(--d-size)); height: calc(44vmax * var(--d-size));
+  background: radial-gradient(circle, rgba(82,117,197,0.65) 0%, rgba(82,117,197,0) 62%);
+  animation: drift5 28s ease-in-out infinite alternate; }
+@keyframes drift1 { from { transform: translate(0,0) scale(1); }    to { transform: translate(20vw, 14vh) scale(1.15); } }
+@keyframes drift2 { from { transform: translate(0,0) scale(1.1); }  to { transform: translate(-18vw, 16vh) scale(1); } }
+@keyframes drift3 { from { transform: translate(0,0) scale(1); }    to { transform: translate(-16vw, -16vh) scale(1.12); } }
+@keyframes drift4 { from { transform: translate(0,0) scale(1.12); } to { transform: translate(16vw, -15vh) scale(1); } }
+@keyframes drift5 { from { transform: translate(0,0) scale(1); }    to { transform: translate(-15vw, 14vh) scale(1.18); } }
+.grain {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  opacity: 0.02; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.vignette {
+  position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 40%, transparent 60%, rgba(9,9,11,0.22) 100%);
+}
+main, nav, footer { position: relative; z-index: 2; }
 
-.ios-bg-about .b1 { width: 600px; height: 500px; top: 0; right: 0; background: radial-gradient(circle, oklch(0.75 0.16 280) 0%, transparent 70%); opacity: 0.28; }
-.ios-bg-about .b2 { width: 500px; height: 400px; bottom: 0; left: 0; background: radial-gradient(circle, oklch(0.78 0.15 50) 0%, transparent 70%); opacity: 0.22; }
-
-.ios-bg-study .b1 { width: 700px; height: 400px; top: 0; left: -100px; background: radial-gradient(circle, oklch(0.72 0.14 200) 0%, transparent 70%); opacity: 0.18; }
-.ios-bg-study .b2 { width: 500px; height: 500px; bottom: -100px; right: 0; background: radial-gradient(circle, oklch(0.75 0.16 320) 0%, transparent 70%); opacity: 0.18; }
-
-.ios-bg-contact .b1 { width: 600px; height: 500px; top: -100px; right: -100px; background: radial-gradient(circle, oklch(0.72 0.18 280) 0%, transparent 70%); opacity: 0.22; }
-.ios-bg-contact .b2 { width: 400px; height: 400px; bottom: 0; left: 50px; background: radial-gradient(circle, oklch(0.78 0.15 50) 0%, transparent 70%); opacity: 0.18; }
+/* ─── Scroll reveal ─── */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.9s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .drift .blob { animation: none; }
+}
 
 /* ─── NAV ─── */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px 60px;
-  background: rgba(245,239,228,0.88);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--ink-faint);
+  padding: 18px 48px;
+  background: rgba(15,15,21,0.72);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4); backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--stroke-soft);
 }
-.nav-logo {
-  display: flex; align-items: center; gap: 10px;
-  text-decoration: none; color: var(--ink);
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-orb {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: conic-gradient(from 40deg, #9a75e8, #51d1e3, #df87eb, #e4be59, #9a75e8);
+  filter: saturate(1.3);
+  box-shadow: 0 0 18px rgba(154,117,232,0.55);
+  animation: orbspin 14s linear infinite;
 }
-.nav-logo-icon { width: 18px; height: 30px; flex-shrink: 0; }
-.nav-logo-name {
-  font-family: 'Syne', sans-serif;
-  font-size: 15px; font-weight: 700; letter-spacing: 0.04em;
-  color: var(--ink);
-}
-.nav-logo-sep {
-  width: 1px; height: 13px; background: var(--ink-faint); flex-shrink: 0;
-}
-.nav-logo-sub {
-  font-family: 'Syne', sans-serif;
-  font-size: 10px; font-weight: 400; letter-spacing: 0.18em;
-  color: var(--ink-light); text-transform: uppercase;
-}
-.nav-links { display: flex; gap: 32px; }
+@keyframes orbspin { to { transform: rotate(360deg); } }
+.nav-name { font-family: var(--font-latin); font-weight: 700; font-size: 15px; letter-spacing: 0.02em; }
+.nav-sub { font-size: 10px; letter-spacing: 0.22em; color: var(--ink-faint); text-transform: uppercase; font-family: var(--font-latin); }
+.nav-links { display: flex; gap: 26px; }
 .nav-links a {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px; color: var(--ink-light); text-decoration: none;
-  letter-spacing: 0.08em; transition: color 0.2s;
+  font-size: 13px; color: var(--ink-dim); text-decoration: none; letter-spacing: 0.06em;
+  transition: color 0.25s; position: relative;
 }
-.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover { color: #fff; }
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: -5px; height: 1.5px; width: 0;
+  background: var(--grad-text); transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
 
 /* ─── HERO ─── */
 .hero {
   min-height: 100vh;
-  display: grid; grid-template-columns: 1fr 1fr;
-  padding: 100px 60px 60px;
-  position: relative; overflow: hidden;
-  align-items: center;
-  background: var(--paper);
+  display: flex; flex-direction: column; justify-content: center; align-items: flex-start;
+  text-align: left;
+  max-width: 1240px; margin: 0 auto;
+  padding: 140px 48px 80px;
 }
-
-/* ─── Flowing watercolor blobs ─── */
-.wc-stage {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-}
-.wc-blob {
-  position: absolute; border-radius: 50%;
-  filter: blur(72px);
-  will-change: transform;
-  mix-blend-mode: multiply;
-}
-@keyframes drift1 {
-  0%   { transform: translate(0,0) scale(1); }
-  33%  { transform: translate(120px,-80px) scale(1.12); }
-  66%  { transform: translate(-60px,100px) scale(0.92); }
-  100% { transform: translate(0,0) scale(1); }
-}
-@keyframes drift2 {
-  0%   { transform: translate(0,0) scale(1); }
-  40%  { transform: translate(-140px,60px) scale(1.14); }
-  70%  { transform: translate(80px,-110px) scale(0.90); }
-  100% { transform: translate(0,0) scale(1); }
-}
-@keyframes drift3 {
-  0%   { transform: translate(0,0) scale(1) rotate(0deg); }
-  50%  { transform: translate(100px,130px) scale(1.10) rotate(12deg); }
-  100% { transform: translate(0,0) scale(1) rotate(0deg); }
-}
-@keyframes drift4 {
-  0%   { transform: translate(0,0) scale(1); }
-  30%  { transform: translate(-50px,-30px) scale(1.12); }
-  65%  { transform: translate(70px,40px) scale(0.9); }
-  100% { transform: translate(0,0) scale(1); }
-}
-@keyframes drift5 {
-  0%   { transform: translate(0,0) scale(1); }
-  45%  { transform: translate(30px,-80px) scale(1.05); }
-  80%  { transform: translate(-60px,20px) scale(0.96); }
-  100% { transform: translate(0,0) scale(1); }
-}
-.wc-stage .wc-b1 { width: 680px; height: 560px; top: -160px; right: -80px;  background: radial-gradient(circle, oklch(0.82 0.12 280) 0%, transparent 70%); opacity: 0.55; animation: drift1 28s ease-in-out infinite; }
-.wc-stage .wc-b2 { width: 580px; height: 500px; bottom: -80px; left: -120px; background: radial-gradient(circle, oklch(0.82 0.14 55)  0%, transparent 70%); opacity: 0.50; animation: drift2 34s ease-in-out infinite; }
-.wc-stage .wc-b3 { width: 460px; height: 460px; top: 80px;  left: 28%;       background: radial-gradient(circle, oklch(0.84 0.10 170) 0%, transparent 70%); opacity: 0.40; animation: drift3 40s ease-in-out infinite; }
-.wc-stage .wc-b4 { width: 380px; height: 380px; bottom: 40px; right: 20%;    background: radial-gradient(circle, oklch(0.80 0.14 340) 0%, transparent 70%); opacity: 0.38; animation: drift4 32s ease-in-out infinite; }
-.wc-stage .wc-b5 { width: 300px; height: 320px; top: 45%; left: 10%;         background: radial-gradient(circle, oklch(0.86 0.10 95)  0%, transparent 70%); opacity: 0.42; animation: drift5 38s ease-in-out infinite; }
-.wc-stage-sm .wc-b1 { width: 550px; height: 420px; top: -60px; right: -80px;   background: radial-gradient(circle, oklch(0.82 0.10 280) 0%, transparent 70%); opacity: 0.28; animation: drift1 36s ease-in-out infinite; }
-.wc-stage-sm .wc-b2 { width: 460px; height: 380px; bottom: -60px; left: -60px; background: radial-gradient(circle, oklch(0.84 0.12 55)  0%, transparent 70%); opacity: 0.24; animation: drift2 42s ease-in-out infinite; }
-
-/* ─── Chime blobs (hero right) ─── */
-.chime-blobs {
-  position: relative; width: 360px; height: 480px; flex-shrink: 0;
-}
-.chime-blobs .cb {
-  position: absolute; border-radius: 50%;
-  filter: blur(60px);
-  mix-blend-mode: multiply;
-  transform-origin: center 0;
-}
-/* Pendulum-like sway: rotate around top, different speeds */
-@keyframes sway1 { 0%,100%{transform:rotate(-8deg) scaleY(1)} 50%{transform:rotate(8deg) scaleY(1.04)} }
-@keyframes sway2 { 0%,100%{transform:rotate(6deg) scaleY(0.96)} 50%{transform:rotate(-10deg) scaleY(1.06)} }
-@keyframes sway3 { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(9deg)} }
-@keyframes sway4 { 0%,100%{transform:rotate(10deg) scaleY(1.03)} 50%{transform:rotate(-6deg) scaleY(0.97)} }
-@keyframes sway5 { 0%,100%{transform:rotate(-12deg) scaleY(0.95)} 50%{transform:rotate(5deg) scaleY(1.05)} }
-.cb1 { width:180px;height:260px; top:20px;  left:30px;  background:radial-gradient(ellipse, oklch(0.80 0.14 280) 0%, transparent 70%); opacity:0.55; animation:none; }
-.cb2 { width:160px;height:300px; top:10px;  left:100px; background:radial-gradient(ellipse, oklch(0.82 0.16 55)  0%, transparent 70%); opacity:0.50; animation:none; }
-.cb3 { width:140px;height:280px; top:30px;  left:170px; background:radial-gradient(ellipse, oklch(0.84 0.12 170) 0%, transparent 70%); opacity:0.45; animation:none; }
-.cb4 { width:130px;height:220px; top:15px;  left:230px; background:radial-gradient(ellipse, oklch(0.80 0.15 340) 0%, transparent 70%); opacity:0.42; animation:none; }
-.cb5 { width:120px;height:200px; top:25px;  left:290px; background:radial-gradient(ellipse, oklch(0.86 0.11 95)  0%, transparent 70%); opacity:0.48; animation:none; }
-.chime-kanji {
-  position:absolute; bottom:10px; right:10px; width:160px; height:160px; pointer-events:none;
-}
-.hero-left { position: relative; z-index: 2; padding-right: 40px; }
 .hero-eyebrow {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px; letter-spacing: 0.22em; color: var(--ink-light);
-  text-transform: uppercase; margin-bottom: 28px;
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: 16px;
+  font-size: 12px; letter-spacing: 0.3em; color: var(--ink-dim);
+  margin-bottom: 30px;
 }
-.hero-eyebrow::before {
-  content: ''; display: inline-block;
-  width: 32px; height: 1px; background: var(--ink-faint);
-}
+.hero-eyebrow::before { content: ''; width: 36px; height: 1px; background: rgba(245,245,248,0.35); }
 .hero-h1 {
-  font-family: 'Noto Serif SC', serif;
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 300; line-height: 1.4;
-  letter-spacing: 0.02em;
-  margin-bottom: 20px;
+  font-size: clamp(42px, 5.2vw, 78px);
+  font-weight: 700; line-height: 1.18; letter-spacing: -0.01em;
+  margin-bottom: 24px;
+  text-wrap: balance;
 }
-.hero-h1 em {
-  font-style: italic; color: var(--accent-warm);
-  font-weight: 600;
+.hero-h1 .grad {
+  background: var(--grad-text);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-sub {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px; line-height: 2; color: var(--ink-light);
-  max-width: 420px; margin-bottom: 36px;
+  font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--ink-dim);
+  max-width: 520px; margin-bottom: 42px;
 }
-.hero-cta {
+.hero-cta-row { display: flex; align-items: center; justify-content: flex-start; gap: 18px; flex-wrap: wrap; }
+.btn-primary {
   display: inline-flex; align-items: center; gap: 10px;
-  background: var(--ink); color: var(--paper);
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px; letter-spacing: 0.1em;
-  padding: 13px 28px; border: none; cursor: pointer;
-  text-decoration: none; transition: background 0.2s;
+  background: #f5f5f8; color: #0d0d11;
+  font-size: 14px; font-weight: 500; letter-spacing: 0.02em;
+  padding: 15px 32px; border-radius: 999px; text-decoration: none; border: none; cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 8px 32px rgba(255,255,255,0.12);
 }
-.hero-cta:hover { background: var(--accent-warm); }
-.hero-cta-ghost {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: transparent; color: var(--ink);
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px; letter-spacing: 0.1em;
-  padding: 12px 28px; border: 1px solid var(--ink-faint);
-  cursor: pointer; text-decoration: none; margin-left: 12px;
-  transition: border-color 0.2s;
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(154,117,232,0.35); }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--ink); font-size: 14px; letter-spacing: 0.02em; text-decoration: none;
+  padding: 15px 28px; border-radius: 999px;
+  border: 1px solid var(--stroke); background: var(--glass);
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  transition: color 0.25s, gap 0.25s, border-color 0.25s, background 0.25s;
 }
-.hero-cta-ghost:hover { border-color: var(--ink); }
-.hero-right {
-  position: relative; z-index: 2;
-  display: flex; align-items: center; justify-content: center;
-}
-/* Wind Chime illustration */
-.chime-wrap {
-  position: relative; width: 320px; height: 480px;
-}
+.btn-ghost:hover { color: #fff; gap: 14px; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); }
+.hero-stats { display: flex; justify-content: flex-start; gap: 44px; margin-top: 64px; }
+.hstat-num { font-family: var(--font-latin); font-size: 30px; font-weight: 700; }
+.hstat-num .grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hstat-label { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.14em; margin-top: 6px; }
 
-/* ─── SECTION shared ─── */
-section { padding: 80px 60px; position: relative; }
-.section-label {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; letter-spacing: 0.28em; color: var(--ink-light);
-  text-transform: uppercase;
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 44px;
+/* Hero orb — the "dynamic wallpaper" object */
+
+/* ─── Sections ─── */
+section.block { max-width: 1240px; margin: 0 auto; padding: 110px 48px 40px; scroll-margin-top: 70px; }
+.sec-label {
+  display: flex; align-items: center; gap: 16px;
+  font-size: 13px; letter-spacing: 0.34em;
+  color: var(--ink-dim); margin-bottom: 22px;
 }
-.section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--ink-faint); }
-.section-h {
-  font-family: 'Noto Serif SC', serif;
-  font-size: clamp(24px, 3vw, 38px);
-  font-weight: 300; line-height: 1.4; margin-bottom: 10px;
-}
-.section-h em { font-style: italic; color: var(--accent-warm); font-weight: 600; }
+.sec-label::after { content: ''; width: 46px; height: 1px; background: rgba(245,245,248,0.28); }
+.sec-h { font-size: clamp(30px, 3.4vw, 48px); font-weight: 700; line-height: 1.35; margin-bottom: 18px; text-wrap: balance; }
+.sec-h .grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.sec-sub { color: var(--ink-dim); font-weight: 300; line-height: 1.9; max-width: 560px; font-size: 15px; }
 
 /* ─── WORKS ─── */
-.works { background: var(--paper); }
-.works-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
-  margin-bottom: 36px;
-}
-.works-filters { display: flex; gap: 8px; }
+.works-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 44px; flex-wrap: wrap; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; }
 .filter-btn {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px; padding: 6px 16px; letter-spacing: 0.06em;
-  border: 1px solid var(--ink-faint); background: transparent;
-  color: var(--ink-light); cursor: pointer; transition: all 0.2s;
+  font-family: var(--font-cn); font-size: 13px; color: var(--ink-dim);
+  background: var(--glass); border: 1px solid var(--stroke);
+  padding: 10px 20px; border-radius: 999px; cursor: pointer;
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  transition: all 0.25s;
 }
-.filter-btn:hover, .filter-btn.active {
-  background: var(--ink); color: var(--paper); border-color: var(--ink);
+.filter-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
+.filter-btn.active {
+  background: #f5f5f8; color: #0d0d11; border-color: #f5f5f8; font-weight: 500;
+  box-shadow: 0 6px 24px rgba(255,255,255,0.15);
 }
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
+.works-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 22px; }
 .work-card {
-  position: relative; overflow: hidden; cursor: pointer;
-  aspect-ratio: 4/3;
-  transition: transform 0.3s;
+  position: relative; border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  border: 1px solid var(--stroke-soft);
+  background: rgba(23,23,31,0.42);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.4s;
+  grid-column: span 2; min-height: 340px;
+  display: flex; flex-direction: column; justify-content: flex-end;
 }
-.work-card:hover { transform: translateY(-3px); }
-.work-card:hover .work-card-overlay { opacity: 1; }
-.work-card-bg { position: absolute; inset: 0; }
-.work-card-wash {
-  position: absolute; inset: 0;
-  mix-blend-mode: multiply; pointer-events: none;
+.work-card.featured { grid-column: span 3; min-height: 420px; }
+.work-card:nth-child(2) { grid-column: span 3; min-height: 420px; }
+.work-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; z-index: 2;
+  background: linear-gradient(90deg, var(--sc1, #9a75e8), var(--sc2, #51d1e3));
+  opacity: 0; transition: opacity 0.35s;
 }
-.work-card-overlay {
-  position: absolute; inset: 0; opacity: 0;
-  background: rgba(245,239,228,0.55);
-  display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.3s;
+.work-card:hover::before { opacity: 1; }
+.work-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.18);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45);
 }
-.work-card-view {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px; letter-spacing: 0.12em; color: var(--ink);
-  border: 1px solid rgba(28,21,16,0.35); padding: 8px 20px;
+.work-cover { position: absolute; inset: 0; overflow: hidden; }
+.work-cover .blob { position: absolute; border-radius: 50%; filter: blur(64px); mix-blend-mode: screen; }
+.work-cover::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(7,7,8,0.05) 30%, rgba(7,7,8,0.88) 88%);
 }
-.work-card-info {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 14px 16px;
-  background: linear-gradient(to top, rgba(245,239,228,0.85) 0%, rgba(245,239,228,0.0) 60%);
-}
-.work-title { font-size: 14px; color: var(--ink); font-weight: 400; }
-.work-cat {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; color: var(--ink-light); margin-top: 3px; letter-spacing: 0.06em;
-}
-/* Featured card takes 2 cols */
-.work-card.featured { grid-column: span 2; }
-.work-card.featured .work-title { font-size: 18px; color: var(--ink); }
+.work-info { position: relative; z-index: 2; padding: 26px; }
+.work-catline { font-size: 11px; letter-spacing: 0.2em; color: var(--ink-dim); text-transform: uppercase; font-family: var(--font-latin); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.work-catline .cdot { width: 6px; height: 6px; border-radius: 50%; }
+.work-title { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+.work-card.featured .work-title { font-size: 30px; }
+.work-tools { font-size: 13px; color: var(--ink-dim); font-weight: 300; }
 
 /* ─── ABOUT ─── */
-.about { border-top: 1px solid var(--ink-faint); }
-.about-inner {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
-  align-items: start;
-}
-.about-portrait {
-  position: relative; aspect-ratio: 3/4; overflow: hidden;
-}
-.about-portrait-inner {
-  position: absolute; inset: 0;
-}
-.about-portrait-caption {
-  position: absolute; bottom: -1px; left: 0; right: 0;
-  padding: 10px 14px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; letter-spacing: 0.12em; color: var(--ink-light);
-  border-top: 1px solid var(--ink-faint);
-  background: rgba(245,239,228,0.85);
-}
-.about-text { padding-top: 4px; }
-.about-quote {
-  font-family: 'Ma Shan Zheng', cursive;
-  font-size: 26px; line-height: 1.7; color: var(--ink);
-  margin-bottom: 24px;
-}
-.about-quote em { color: var(--accent-warm); }
-.about-body {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px; line-height: 2; color: var(--ink-light);
-  margin-bottom: 32px;
-}
-.about-skills { display: flex; flex-wrap: wrap; gap: 8px; }
+.about-head { text-align: center; }
+.about-head .sec-label { justify-content: center; }
+.about-grid { max-width: 700px; margin: 50px auto 0; text-align: center; }
+.about-quote { font-size: clamp(26px, 2.6vw, 38px); font-weight: 700; line-height: 1.5; margin-bottom: 22px; }
+.about-quote .grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.about-body { color: var(--ink-dim); font-weight: 300; line-height: 2; font-size: 15px; margin: 0 auto 34px; max-width: 560px; }
+.skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .skill-chip {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px; padding: 5px 14px;
-  border: 1px solid var(--ink-faint); color: var(--ink-light);
-  letter-spacing: 0.04em; transition: all 0.2s;
+  font-size: 13px; color: var(--ink-dim); padding: 9px 18px; border-radius: 999px;
+  background: var(--glass); border: 1px solid var(--stroke);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: all 0.25s;
 }
-.skill-chip:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
-
-/* ─── STUDY LOG ─── */
-.study { background: var(--paper-dark); border-top: 1px solid var(--ink-faint); }
-.study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--ink-faint); border: 1px solid var(--ink-faint); }
-.study-card {
-  background: var(--paper-dark); padding: 28px 24px;
-  cursor: pointer; transition: background 0.2s;
-}
-.study-card:hover { background: var(--paper); }
-.study-date {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; letter-spacing: 0.1em; color: var(--ink-light);
-  margin-bottom: 12px;
-}
-.study-title { font-size: 16px; font-weight: 400; line-height: 1.5; margin-bottom: 10px; }
-.study-desc {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px; line-height: 1.8; color: var(--ink-light);
-}
-.study-tag {
-  display: inline-block; margin-top: 14px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; padding: 3px 10px; letter-spacing: 0.08em;
-  border: 1px solid var(--ink-faint); color: var(--ink-light);
-}
-
-/* ─── Flowing watercolor blobs ─── */
-.wc-stage {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-}
-.wc-blob {
-  position: absolute; border-radius: 50%;
-  filter: blur(72px);
-  will-change: transform;
-  mix-blend-mode: multiply;
-}
-@keyframes drift1 {
-  0%   { transform: translate(0,0) scale(1); }
-  33%  { transform: translate(60px,-40px) scale(1.08); }
-  66%  { transform: translate(-30px,50px) scale(0.95); }
-  100% { transform: translate(0,0) scale(1); }
-}
-@keyframes drift2 {
-  0%   { transform: translate(0,0) scale(1); }
-  40%  { transform: translate(-80px,30px) scale(1.1); }
-  70%  { transform: translate(40px,-60px) scale(0.92); }
-  100% { transform: translate(0,0) scale(1); }
-}
-@keyframes drift3 {
-  0%   { transform: translate(0,0) scale(1) rotate(0deg); }
-  50%  { transform: translate(50px,70px) scale(1.06) rotate(8deg); }
-  100% { transform: translate(0,0) scale(1) rotate(0deg); }
-}
-@keyframes drift4 {
-  0%   { transform: translate(0,0) scale(1); }
-  30%  { transform: translate(-50px,-30px) scale(1.12); }
-  65%  { transform: translate(70px,40px) scale(0.9); }
-  100% { transform: translate(0,0) scale(1); }
-}
-@keyframes drift5 {
-  0%   { transform: translate(0,0) scale(1); }
-  45%  { transform: translate(30px,-80px) scale(1.05); }
-  80%  { transform: translate(-60px,20px) scale(0.96); }
-  100% { transform: translate(0,0) scale(1); }
-}
-/* Hero blobs */
-.wc-stage .wc-b1 { width:700px;height:580px;top:-160px;right:-80px;  background:radial-gradient(circle,oklch(0.75 0.22 280) 0%,transparent 65%);opacity:0.75;animation:none; }
-.wc-stage .wc-b2 { width:600px;height:520px;bottom:-80px;left:-120px; background:radial-gradient(circle,oklch(0.78 0.22 55)  0%,transparent 65%);opacity:0.70;animation:none; }
-.wc-stage .wc-b3 { width:480px;height:480px;top:80px;left:28%;        background:radial-gradient(circle,oklch(0.78 0.18 170) 0%,transparent 65%);opacity:0.65;animation:none; }
-.wc-stage .wc-b4 { width:400px;height:400px;bottom:40px;right:20%;    background:radial-gradient(circle,oklch(0.75 0.22 340) 0%,transparent 65%);opacity:0.62;animation:none; }
-.wc-stage .wc-b5 { width:320px;height:340px;top:45%;left:10%;         background:radial-gradient(circle,oklch(0.80 0.20 95)  0%,transparent 65%);opacity:0.68;animation:none; }
-/* Smaller blobs for other sections */
-.wc-stage-sm .wc-b1 { width:560px;height:430px;top:-60px;right:-80px;   background:radial-gradient(circle,oklch(0.75 0.20 280) 0%,transparent 65%);opacity:0.50;animation:none; }
-.wc-stage-sm .wc-b2 { width:480px;height:390px;bottom:-60px;left:-60px; background:radial-gradient(circle,oklch(0.78 0.20 55)  0%,transparent 65%);opacity:0.45;animation:none; }
-
-/* ─── Chime blobs (hero right) ─── */
-.chime-blobs {
-  position: relative; width: 360px; height: 480px; flex-shrink: 0;
-}
-.chime-blobs .cb {
-  position: absolute; border-radius: 50%;
-  filter: blur(60px); mix-blend-mode: multiply;
-  transform-origin: center 0;
-}
-@keyframes sway1 { 0%,100%{transform:rotate(-8deg) scaleY(1)}   50%{transform:rotate(8deg) scaleY(1.04)} }
-@keyframes sway2 { 0%,100%{transform:rotate(6deg) scaleY(0.96)} 50%{transform:rotate(-10deg) scaleY(1.06)} }
-@keyframes sway3 { 0%,100%{transform:rotate(-5deg)}              50%{transform:rotate(9deg)} }
-@keyframes sway4 { 0%,100%{transform:rotate(10deg) scaleY(1.03)} 50%{transform:rotate(-6deg) scaleY(0.97)} }
-@keyframes sway5 { 0%,100%{transform:rotate(-12deg) scaleY(0.95)} 50%{transform:rotate(5deg) scaleY(1.05)} }
-.cb1 { width:200px;height:300px;top:10px;left:20px;  background:radial-gradient(ellipse,oklch(0.72 0.25 280) 0%,transparent 65%);opacity:0.80;animation:none; }
-.cb2 { width:180px;height:340px;top:0px; left:90px;  background:radial-gradient(ellipse,oklch(0.74 0.26 55)  0%,transparent 65%);opacity:0.75;animation:none; }
-.cb3 { width:160px;height:320px;top:15px;left:160px; background:radial-gradient(ellipse,oklch(0.74 0.24 170) 0%,transparent 65%);opacity:0.72;animation:none; }
-.cb4 { width:160px;height:260px;top:5px; left:225px; background:radial-gradient(ellipse,oklch(0.72 0.26 340) 0%,transparent 65%);opacity:0.72;animation:none; }
-.cb5 { width:150px;height:240px;top:10px;left:285px; background:radial-gradient(ellipse,oklch(0.76 0.22 95)  0%,transparent 65%);opacity:0.75;animation:none; }
+.skill-chip:hover { color: #fff; border-color: rgba(154,117,232,0.6); box-shadow: 0 0 20px rgba(154,117,232,0.25); transform: translateY(-2px); }
 
 /* ─── STUDY ─── */
-.study { border-top: 1px solid var(--ink-faint); }
-.study-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1px; background: var(--ink-faint);
-  border: 1px solid var(--ink-faint);
-}
+.study-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 50px; }
 .study-card {
-  background: var(--paper-dark); padding: 28px 24px;
-  cursor: pointer; transition: background 0.2s;
+  position: relative; border-radius: var(--radius); padding: 30px; cursor: pointer; overflow: hidden;
+  background: var(--glass); border: 1px solid var(--stroke-soft);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.3s, box-shadow 0.4s;
 }
-.study-card:hover { background: var(--paper); }
-.study-date {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; letter-spacing: 0.1em; color: var(--ink-light); margin-bottom: 12px;
+.study-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--sc1, #9a75e8), var(--sc2, #51d1e3));
+  opacity: 0; transition: opacity 0.35s;
 }
-.study-title { font-size: 16px; font-weight: 400; line-height: 1.5; margin-bottom: 10px; }
-.study-desc {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 12px; line-height: 1.8; color: var(--ink-light);
-}
+.study-card:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.18); box-shadow: 0 24px 60px rgba(0,0,0,0.45); }
+.study-card:hover::before { opacity: 1; }
+.study-date { font-family: var(--font-latin); font-size: 12px; letter-spacing: 0.18em; color: var(--ink-faint); margin-bottom: 14px; }
+.study-title { font-size: 18px; font-weight: 700; line-height: 1.5; margin-bottom: 12px; }
+.study-desc { font-size: 13.5px; font-weight: 300; line-height: 1.9; color: var(--ink-dim); margin-bottom: 20px; }
 .study-tag {
-  display: inline-block; margin-top: 14px;
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 10px; padding: 3px 10px; letter-spacing: 0.08em;
-  border: 1px solid var(--ink-faint); color: var(--ink-light);
+  display: inline-block; font-size: 11px; letter-spacing: 0.12em; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--stroke); color: var(--ink-dim);
 }
 
 /* ─── CONTACT ─── */
-.contact { border-top: 1px solid var(--ink-faint); }
-.contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
-.contact-text .section-h { margin-bottom: 20px; }
-.contact-body {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 14px; line-height: 2; color: var(--ink-light);
-  margin-bottom: 28px;
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; margin-top: 50px; align-items: start; }
+.contact-body { color: var(--ink-dim); font-weight: 300; line-height: 2; font-size: 15px; margin: 20px 0 34px; max-width: 440px; }
+.chime-note {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; border-radius: 18px;
+  background: var(--glass); border: 1px solid var(--stroke);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  font-size: 14px; color: var(--ink-dim); font-weight: 300; max-width: 440px;
 }
-.contact-chime-note {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'Ma Shan Zheng', cursive; font-size: 16px; color: var(--ink-light);
-  padding: 16px 0; border-top: 1px solid var(--ink-faint);
-  border-bottom: 1px solid var(--ink-faint);
+.chime-note svg { flex-shrink: 0; animation: chimesway 5s ease-in-out infinite; transform-origin: top center; }
+@keyframes chimesway { 0%,100% { transform: rotate(-4deg);} 50% { transform: rotate(4deg);} }
+.contact-form {
+  padding: 36px; border-radius: 26px;
+  background: var(--glass); border: 1px solid var(--stroke);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
 }
-.contact-form { display: flex; flex-direction: column; gap: 12px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.form-input, .form-select, .form-textarea {
-  width: 100%; padding: 12px 14px;
-  background: rgba(28,21,16,0.03); border: 1px solid var(--ink-faint);
-  color: var(--ink); font-family: 'Noto Sans SC', sans-serif; font-size: 13px;
-  transition: border-color 0.2s; resize: none;
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-input, .form-textarea, .form-select {
+  width: 100%; padding: 14px 18px; border-radius: 14px;
+  background: rgba(255,255,255,0.045); border: 1px solid var(--stroke);
+  color: var(--ink); font-family: var(--font-cn); font-size: 14px; font-weight: 300;
+  outline: none; transition: border-color 0.25s, background 0.25s;
 }
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  outline: none; border-color: rgba(28,21,16,0.35);
-}
-.form-textarea { height: 100px; }
+.form-input::placeholder, .form-textarea::placeholder { color: var(--ink-faint); }
+.form-input:focus, .form-textarea:focus, .form-select:focus { border-color: rgba(154,117,232,0.7); background: rgba(255,255,255,0.07); }
+.form-select { margin-bottom: 14px; appearance: none; cursor: pointer; }
+.form-select option { background: #16161d; color: #f5f5f8; }
+.form-textarea { min-height: 130px; resize: vertical; margin-bottom: 20px; }
 .form-submit {
-  align-self: flex-start;
-  background: var(--ink); color: var(--paper);
-  font-family: 'Noto Sans SC', sans-serif; font-size: 12px; letter-spacing: 0.1em;
-  padding: 13px 32px; border: none; cursor: pointer; transition: background 0.2s;
+  width: 100%; padding: 16px; border-radius: 14px; border: none; cursor: pointer;
+  background: #f5f5f8; color: #0d0d11; font-family: var(--font-cn); font-size: 15px; font-weight: 500; letter-spacing: 0.06em;
+  transition: transform 0.25s, box-shadow 0.25s;
 }
-.form-submit:hover { background: var(--accent-warm); }
+.form-submit:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(154,117,232,0.4); }
+.form-ok { display: none; margin-top: 16px; font-size: 13px; color: var(--teal); }
 
 /* ─── FOOTER ─── */
 footer {
-  padding: 32px 60px;
-  border-top: 1px solid var(--ink-faint);
-  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 120px; border-top: 1px solid var(--stroke-soft);
+  padding: 36px 48px; text-align: center;
+  max-width: 1240px; margin-left: auto; margin-right: auto;
 }
-.footer-logo {
-  display: flex; align-items: center; gap: 10px; color: rgba(28,21,16,0.45);
-}
-.footer-logo svg { width: 14px; height: 24px; opacity: 0.5; }
-.footer-logo-name { font-family: 'Noto Serif SC', serif; font-size: 13px; font-weight: 400; letter-spacing: 0.08em; }
-.footer-logo-sep { width: 1px; height: 12px; background: var(--ink-faint); }
-.footer-logo-sub { font-family: 'Syne', sans-serif; font-size: 8px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(28,21,16,0.3); }
-.footer-links { display: flex; gap: 24px; }
-.footer-links a {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px; color: var(--ink-light); text-decoration: none; letter-spacing: 0.08em;
-}
-.footer-copy {
-  font-family: 'Noto Sans SC', sans-serif;
-  font-size: 11px; color: var(--ink-faint); letter-spacing: 0.06em;
-}
+.footer-copy { font-family: var(--font-latin); font-size: 12px; letter-spacing: 0.18em; color: var(--ink-faint); }
+.footer-copy { font-size: 12px; color: var(--ink-faint); font-family: var(--font-latin); letter-spacing: 0.08em; }
 
-/* ─── TWEAKS ─── */
-.tweak-panel {
-  position: fixed; bottom: 24px; right: 24px; z-index: 999;
-  background: rgba(245,239,228,0.96); border: 1px solid var(--ink-faint);
-  padding: 20px; width: 230px;
-  font-family: 'Noto Sans SC', sans-serif;
-  display: none;
-  box-shadow: 0 8px 32px rgba(28,21,16,0.12);
-  backdrop-filter: blur(8px);
-}
-.tweak-panel.visible { display: block; }
-.tweak-title {
-  font-size: 10px; letter-spacing: 0.2em; color: var(--ink-light);
-  text-transform: uppercase; margin-bottom: 16px;
-  padding-bottom: 10px; border-bottom: 1px solid var(--ink-faint);
-}
-.tweak-group { margin-bottom: 14px; }
-.tweak-label { font-size: 11px; color: var(--ink-light); display: block; margin-bottom: 6px; }
-.tweak-select {
-  width: 100%; padding: 7px 10px;
-  background: transparent; border: 1px solid var(--ink-faint);
-  color: var(--ink); font-size: 11px; font-family: inherit;
-}
-.tweak-color-row { display: flex; gap: 8px; }
-.tweak-swatch {
-  width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
-  border: 2px solid transparent; transition: border-color 0.15s;
-}
-.tweak-swatch.active { border-color: var(--ink); }
-
-
-/* ─── DETAIL OVERLAY ─── */
+/* ─── Detail overlay ─── */
 .detail-overlay {
-  position: fixed; inset: 0; z-index: 500;
-  background: var(--paper);
-  overflow-y: auto;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.38s cubic-bezier(0.4,0,0.2,1), transform 0.38s cubic-bezier(0.4,0,0.2,1);
-  transform: translateY(18px);
+  position: fixed; inset: 0; z-index: 200; display: none;
+  background: rgba(7,7,8,0.88);
+  -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px);
+  overflow-y: auto; padding: 6vh 20px;
 }
-.detail-overlay.open { opacity: 1; pointer-events: all; transform: translateY(0); }
-.detail-inner { max-width: 860px; margin: 0 auto; padding: 90px 60px 80px; }
-.detail-back {
-  display: inline-flex; align-items: center; gap: 8px;
-  font-family: 'Noto Sans SC', sans-serif; font-size: 12px;
-  letter-spacing: 0.08em; color: var(--ink-light);
-  cursor: pointer; margin-bottom: 36px;
-  background: none; border: none; padding: 0; transition: color 0.2s;
+.detail-overlay.open { display: block; animation: fadein 0.35s ease; }
+@keyframes fadein { from { opacity: 0; } to { opacity: 1; } }
+.detail-card {
+  position: relative; max-width: 860px; margin: 0 auto; border-radius: 28px; overflow: hidden;
+  background: rgba(19,19,25,0.85); border: 1px solid var(--stroke);
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6);
+  animation: slideup 0.5s cubic-bezier(0.22,1,0.36,1);
 }
-.detail-back::before { content: '←'; font-size: 14px; }
-.detail-back:hover { color: var(--ink); }
-.detail-hero-img {
-  width: 100%; aspect-ratio: 16/9; margin-bottom: 44px;
-  overflow: hidden; position: relative; border-radius: 0;
+@keyframes slideup { from { opacity: 0; transform: translateY(40px);} to { opacity: 1; transform: none;} }
+.detail-hero { position: relative; height: 300px; overflow: hidden; }
+.detail-hero .blob { position: absolute; border-radius: 50%; filter: blur(70px); mix-blend-mode: screen; }
+.detail-close {
+  position: absolute; top: 24px; right: 24px; z-index: 5;
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.35); color: #fff; font-size: 20px; cursor: pointer;
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  transition: transform 0.25s, background 0.25s;
 }
-.detail-hero-wash { position: absolute; inset: 0; overflow: hidden; }
-.detail-eyebrow {
-  font-family: 'Noto Sans SC', sans-serif; font-size: 10px;
-  letter-spacing: 0.22em; color: var(--ink-light); text-transform: uppercase;
-  margin-bottom: 14px; display: flex; align-items: center; gap: 10px;
-}
-.detail-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--ink-faint); display: inline-block; }
-.detail-title {
-  font-family: 'Noto Serif SC', serif;
-  font-size: clamp(26px, 3.5vw, 42px); font-weight: 300;
-  line-height: 1.4; margin-bottom: 10px;
-}
-.detail-title em { font-style: italic; color: var(--accent-warm); font-weight: 600; }
-.detail-meta {
-  display: flex; gap: 28px; flex-wrap: wrap;
-  margin-bottom: 36px; padding-bottom: 28px;
-  border-bottom: 1px solid var(--ink-faint);
-}
-.detail-meta-item { font-family: 'Noto Sans SC', sans-serif; font-size: 12px; color: var(--ink-light); }
-.detail-meta-item strong { display: block; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 4px; opacity: 0.6; }
-.detail-body { font-family: 'Noto Sans SC', sans-serif; font-size: 14px; line-height: 2.1; color: rgba(28,21,16,0.65); margin-bottom: 32px; }
-.detail-body p { margin-bottom: 20px; }
-.detail-body h3 { font-family: 'Noto Serif SC', serif; font-size: 19px; font-weight: 400; color: var(--ink); margin: 32px 0 14px; }
-.detail-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 32px 0; }
-.detail-img-block { aspect-ratio: 4/3; position: relative; overflow: hidden; }
-.detail-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px; }
-.detail-tag { font-family: 'Noto Sans SC', sans-serif; font-size: 11px; padding: 5px 14px; border: 1px solid var(--ink-faint); color: var(--ink-light); }
-.detail-footer-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding-top: 36px; border-top: 1px solid var(--ink-faint);
-}
+.detail-close:hover { transform: rotate(90deg); background: rgba(255,255,255,0.15); }
+.detail-body-wrap { padding: 44px 52px 40px; }
+.detail-eyebrow { font-family: var(--font-latin); font-size: 12px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-dim); margin-bottom: 14px; }
+.detail-title { font-size: 34px; font-weight: 700; margin-bottom: 22px; }
+.detail-meta { display: flex; gap: 36px; flex-wrap: wrap; margin-bottom: 30px; padding-bottom: 26px; border-bottom: 1px solid var(--stroke-soft); }
+.detail-meta-item strong { display: block; font-size: 11px; letter-spacing: 0.2em; color: var(--ink-faint); font-weight: 400; margin-bottom: 8px; }
+.detail-meta-item span { font-size: 14px; color: var(--ink-dim); }
+.detail-body { font-weight: 300; line-height: 2.05; color: rgba(245,245,248,0.82); font-size: 15px; }
+.detail-body h3 { font-size: 17px; font-weight: 700; margin: 30px 0 12px; color: #fff; }
+.detail-body p { margin-bottom: 14px; }
+.detail-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 30px 0; }
+.detail-shot { position: relative; aspect-ratio: 16/10; border-radius: 16px; overflow: hidden; border: 1px solid var(--stroke-soft); }
+.detail-shot .blob { position: absolute; border-radius: 50%; filter: blur(34px); mix-blend-mode: screen; }
+.detail-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 26px 0 34px; }
+.detail-nav { display: flex; justify-content: space-between; gap: 14px; }
 .detail-nav-btn {
-  font-family: 'Noto Sans SC', sans-serif; font-size: 12px;
-  letter-spacing: 0.08em; color: var(--ink-light);
-  cursor: pointer; background: none; border: none; padding: 0;
-  transition: color 0.2s;
+  flex: 1; padding: 15px; border-radius: 14px; cursor: pointer;
+  background: var(--glass); border: 1px solid var(--stroke); color: var(--ink-dim);
+  font-family: var(--font-cn); font-size: 14px; transition: all 0.25s;
 }
-.detail-nav-btn:hover { color: var(--ink); }
+.detail-nav-btn:hover { color: #fff; border-color: rgba(255,255,255,0.3); }
 
-/* Scroll fade-in */
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.fade-in.visible { opacity: 1; transform: none; }
+/* ─── Sound button ─── */
+.sound-btn {
+  position: fixed; bottom: 26px; right: 26px; z-index: 150;
+  width: 52px; height: 52px; border-radius: 50%; cursor: pointer;
+  background: rgba(16,16,22,0.6); border: 1px solid var(--stroke);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+.sound-btn:hover { transform: scale(1.08); box-shadow: 0 10px 30px rgba(154,117,232,0.35); }
+.sound-btn svg { width: 22px; height: 22px; }
+.sound-btn .waves { opacity: 0; transition: opacity 0.3s; }
+.sound-btn.on .waves { opacity: 1; }
+.sound-btn.on { border-color: rgba(154,117,232,0.6); }
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+  .hero { padding-top: 150px; }
+  .works-grid { grid-template-columns: 1fr 1fr; }
+  .work-card, .work-card.featured, .work-card:nth-child(2) { grid-column: span 1; min-height: 300px; }
+  .study-grid { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-form { max-width: 440px; }
+}
+@media (max-width: 640px) {
+  nav { gap: 14px; padding: 14px 20px; }
+  .nav-links { gap: 15px; flex-wrap: nowrap; }
+  .nav-links a { font-size: 12px; white-space: nowrap; }
+  .nav-sub, .nav-name { display: none; }
+  section.block { padding: 80px 22px 30px; }
+  .hero { padding: 140px 22px 60px; }
+  .hero-stats { gap: 28px; }
+  .works-grid, .study-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .detail-body-wrap { padding: 30px 24px; }
+  .detail-shots { grid-template-columns: 1fr; }
+  footer { padding: 36px 22px; }
+}
+/* ─── Drift 调节面板 ─── */
+.tune-gear {
+  position: fixed; left: 20px; bottom: 20px; z-index: 200;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(15,15,21,0.72);
+  -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+  border: 1px solid var(--stroke);
+  color: var(--ink-dim); font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: color 0.25s, transform 0.25s;
+}
+.tune-gear:hover { color: #fff; transform: rotate(30deg); }
+.tune-panel {
+  position: fixed; left: 20px; bottom: 74px; z-index: 200;
+  width: 250px; padding: 18px 18px 14px;
+  background: rgba(15,15,21,0.82);
+  -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px);
+  border: 1px solid var(--stroke); border-radius: 16px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.45);
+  display: none;
+}
+.tune-panel.open { display: block; }
+.tune-panel h4 { font-size: 12px; letter-spacing: 0.2em; color: var(--ink-dim); margin-bottom: 12px; font-weight: 500; }
+.tune-row { margin-bottom: 11px; }
+.tune-row label { display: flex; justify-content: space-between; font-size: 12px; color: var(--ink-dim); margin-bottom: 5px; }
+.tune-row label b { color: var(--ink); font-weight: 500; font-family: var(--font-latin); }
+.tune-row input[type=range] { width: 100%; accent-color: #9a75e8; height: 18px; cursor: pointer; }
+.tune-reset {
+  width: 100%; margin-top: 4px; padding: 8px;
+  background: transparent; border: 1px solid var(--stroke); border-radius: 10px;
+  color: var(--ink-dim); font-size: 12px; cursor: pointer; letter-spacing: 0.1em;
+}
+.tune-reset:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+.tune-hint { font-size: 10px; color: var(--ink-faint); margin-top: 8px; text-align: center; letter-spacing: 0.06em; }
 </style>
-</head><link rel="stylesheet" asset="eduser.css" href="chrome-extension://mjdbhokoopacimoekfgkcoogikbfgngb/assets/eduser.css">
-<body  >
-
-<!-- ─── WATERCOLOR SVG DEFS ─── -->
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <filter id="wc-blur">
-      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.05" numOctaves="3" seed="5" result="noise"></feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="18" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-    </filter>
-    <filter id="wc-blur2">
-      <feTurbulence type="fractalNoise" baseFrequency="0.04 0.03" numOctaves="3" seed="12" result="noise"></feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-    </filter>
-    <filter id="wc-edge">
-      <feTurbulence type="fractalNoise" baseFrequency="0.025" numOctaves="4" seed="8" result="noise"></feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="22" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
-      <feGaussianBlur stdDeviation="2"></feGaussianBlur>
-    </filter>
-  </defs>
-</svg>
+</head>
+<body>
+<div class="drift" aria-hidden="true">
+  <div class="px" data-f="0.04"><div class="blob b1"></div></div>
+  <div class="px" data-f="0.06"><div class="blob b2"></div></div>
+  <div class="px" data-f="0.03"><div class="blob b3"></div></div>
+  <div class="px" data-f="0.07"><div class="blob b4"></div></div>
+  <div class="px" data-f="0.05"><div class="blob b5"></div></div>
+</div>
+<div class="grain"></div>
+<div class="vignette"></div>
 
 <!-- ─── NAV ─── -->
 <nav>
-  <div class="nav-logo">
-    <span class="nav-logo-name">Wind Chimes</span>
-    <span class="nav-logo-sep"></span>
-    <span class="nav-logo-sub">Studio Log</span>
-  </div>
+  <a class="nav-brand" href="#top">
+    <span class="nav-orb"></span>
+    <span class="nav-name">Wind Chimes</span>
+    <span class="nav-sub">Studio Log</span>
+  </a>
   <div class="nav-links">
-    <a href="#works">作品</a>
     <a href="#about">关于</a>
-    <a href="#study">学习</a>
     <a href="#contact">联系</a>
+    <a href="#works">作品</a>
+    <a href="#study">学习</a>
   </div>
 </nav>
 
+<main id="top">
 <!-- ─── HERO ─── -->
-<section class="hero" id="top">
-  <!-- Flowing watercolor blobs -->
-  <div class="wc-stage">
-    <div class="wc-blob wc-b1"></div>
-    <div class="wc-blob wc-b2"></div>
-    <div class="wc-blob wc-b3"></div>
-    <div class="wc-blob wc-b4"></div>
-    <div class="wc-blob wc-b5"></div>
-  </div>
-  <canvas id="bokehCanvas" style="display:none" width="1505" height="832"></canvas>
-
-  <div class="hero-left fade-in visible">
+<section class="hero">
+  <div class="hero-left reveal in">
     <div class="hero-eyebrow">场景 · 特效 · 着色 · 学习</div>
-    <h1 class="hero-h1">用光与色彩<br>构建<em>想象中的世界</em></h1>
+    <h1 class="hero-h1">用光与色彩<br>构建<span class="grad">想象中的世界</span></h1>
     <p class="hero-sub">记录场景设计、特效制作与着色研究的探索过程——从完整作品到学习笔记，都在这里。</p>
-    <div style="display:flex; align-items:center;">
-      <a class="hero-cta" href="#works">查看作品集</a>
-      <a class="hero-cta-ghost" href="#study">学习记录 →</a>
+    <div class="hero-cta-row">
+      <a class="btn-primary" href="#works">查看作品集 <span>→</span></a>
+      <a class="btn-ghost" href="#study">学习记录 <span>→</span></a>
     </div>
-  </div>
-
-  <div class="hero-right fade-in visible" style="transition-delay:0.2s">
-    <!-- Swaying chime blobs — pure colour, no drawn illustration -->
-    <div class="chime-blobs">
-      <div class="cb cb1"></div>
-      <div class="cb cb2"></div>
-      <div class="cb cb3"></div>
-      <div class="cb cb4"></div>
-      <div class="cb cb5"></div>
+    <div class="hero-stats">
+      <div><div class="hstat-num"><span class="grad">05</span></div><div class="hstat-label">精选作品</div></div>
+      <div><div class="hstat-num"><span class="grad">06</span></div><div class="hstat-label">学习笔记</div></div>
+      <div><div class="hstat-num"><span class="grad">07</span></div><div class="hstat-label">技术栈</div></div>
     </div>
   </div>
 </section>
 
 <!-- ─── WORKS ─── -->
-<section class="works" id="works" style="position:relative;overflow:hidden;">
-  <div class="works-header fade-in visible">
+<section class="block" id="works">
+  <div class="works-head reveal">
     <div>
-      <div class="section-label">精选作品</div>
+      <div class="sec-label">精选作品</div>
+      <h2 class="sec-h">精选<span class="grad">作品</span></h2>
     </div>
-    <div class="works-filters">
-      <button class="filter-btn active" onclick="filterWorks(event,'all')">全部</button>
-      <button class="filter-btn" onclick="filterWorks(event,'场景')">场景</button>
-      <button class="filter-btn" onclick="filterWorks(event,'特效')">特效</button>
-      <button class="filter-btn" onclick="filterWorks(event,'着色')">着色</button>
-      <button class="filter-btn" onclick="filterWorks(event,'草图')">草图</button>
-    </div>
-  </div>
-  <div class="works-grid fade-in visible" id="worksGrid">
-    <!-- Card 1: Featured -->
-    <div class="work-card featured" data-cat="特效" onclick="openWork(0)" style="cursor:pointer">
-      <div class="work-card-bg" style="background: linear-gradient(160deg, #ddd0c8 0%, #c8b8d0 40%, #d4c0a8 100%);">
-        <!-- watercolor wash -->
-        
-      </div>
-      <div class="work-card-overlay"><span class="work-card-view">查看作品</span></div>
-      <div class="work-card-info">
-        <div class="work-title">体积光实验 No.7</div>
-        <div class="work-cat">特效 · Houdini · 体积渲染</div>
-      </div>
-    </div>
-    <!-- Card 2 -->
-    <div class="work-card" data-cat="场景" onclick="openWork(1)" style="cursor:pointer">
-      <div class="work-card-bg" style="background: linear-gradient(140deg, #c8d4d8 0%, #b8c8d0 50%, #c0d0c4 100%);">
-        
-      </div>
-      <div class="work-card-overlay"><span class="work-card-view">查看作品</span></div>
-      <div class="work-card-info">
-        <div class="work-title">夜城场景研究</div>
-        <div class="work-cat">场景 · Blender · Unity URP</div>
-      </div>
-    </div>
-    <!-- Card 3 -->
-    <div class="work-card" data-cat="着色" onclick="openWork(2)" style="cursor:pointer">
-      <div class="work-card-bg" style="background: linear-gradient(150deg, #ddc8b8 0%, #d4b8a0 50%, #ccaa90 100%);">
-        
-      </div>
-      <div class="work-card-overlay"><span class="work-card-view">查看作品</span></div>
-      <div class="work-card-info">
-        <div class="work-title">熔岩材质着色</div>
-        <div class="work-cat">着色 · Shader Graph · Substance</div>
-      </div>
-    </div>
-    <!-- Card 4 -->
-    <div class="work-card" data-cat="特效" onclick="openWork(3)" style="cursor:pointer">
-      <div class="work-card-bg" style="background: linear-gradient(135deg, #c8d4c8 0%, #b8ccb8 50%, #c4d0b8 100%);">
-        
-      </div>
-      <div class="work-card-overlay"><span class="work-card-view">查看作品</span></div>
-      <div class="work-card-info">
-        <div class="work-title">粒子风暴</div>
-        <div class="work-cat">特效 · 粒子系统</div>
-      </div>
-    </div>
-    <!-- Card 5 -->
-    <div class="work-card" data-cat="草图" onclick="openWork(4)" style="cursor:pointer">
-      <div class="work-card-bg" style="background: linear-gradient(150deg, #d0c8d8 0%, #c4b8d0 60%, #c8c0d4 100%);">
-        
-      </div>
-      <div class="work-card-overlay"><span class="work-card-view">查看作品</span></div>
-      <div class="work-card-info">
-        <div class="work-title">程序化云层概念草图</div>
-        <div class="work-cat">草图 · Blender</div>
-      </div>
+    <div class="filters">
+      <button class="filter-btn active" data-cat="all">全部</button>
+      <button class="filter-btn" data-cat="场景">场景</button>
+      <button class="filter-btn" data-cat="特效">特效</button>
+      <button class="filter-btn" data-cat="着色">着色</button>
+      <button class="filter-btn" data-cat="草图">草图</button>
     </div>
   </div>
+  <div class="works-grid" id="worksGrid"></div>
 </section>
 
 <!-- ─── ABOUT ─── -->
-<section class="about" id="about" style="position:relative;overflow:hidden;">
-  <div class="wc-stage wc-stage-sm">
-    <div class="wc-blob wc-b1"></div>
-    <div class="wc-blob wc-b2"></div>
+<section class="block" id="about">
+  <div class="reveal about-head">
+    <div class="sec-label">关于我</div>
+    <h2 class="sec-h">关于<span class="grad">我</span></h2>
   </div>
-  <div class="section-label fade-in visible">关于我</div>
-  <div class="about-inner fade-in visible">
-    <div>
-      <div class="about-portrait">
-        <!-- Flowing watercolor blobs matching hero style -->
-        <div style="position:relative;width:100%;aspect-ratio:3/4;overflow:hidden;background:var(--paper-dark);">
-          <div style="position:absolute;inset:0;overflow:hidden;">
-            <div style="position:absolute;width:380px;height:320px;top:-60px;right:-80px;border-radius:50%;background:radial-gradient(circle,oklch(0.82 0.12 280) 0%,transparent 70%);opacity:0.5;filter:blur(60px);mix-blend-mode:multiply;animation:none;"></div>
-            <div style="position:absolute;width:320px;height:360px;bottom:-60px;left:-60px;border-radius:50%;background:radial-gradient(circle,oklch(0.82 0.14 55) 0%,transparent 70%);opacity:0.45;filter:blur(60px);mix-blend-mode:multiply;animation:none;"></div>
-            <div style="position:absolute;width:260px;height:260px;top:30%;left:20%;border-radius:50%;background:radial-gradient(circle,oklch(0.84 0.10 170) 0%,transparent 70%);opacity:0.38;filter:blur(55px);mix-blend-mode:multiply;animation:none;"></div>
-            <div style="position:absolute;width:200px;height:240px;bottom:10%;right:10%;border-radius:50%;background:radial-gradient(circle,oklch(0.80 0.14 340) 0%,transparent 70%);opacity:0.35;filter:blur(50px);mix-blend-mode:multiply;animation:none;"></div>
-          </div>
-        </div>
-        <div class="about-portrait-caption">CG艺术家 · 技术研究者</div>
-      </div>
-    </div>
-    <div class="about-text">
-      <p class="about-quote">热爱光影，<br><em>相信细节即诗意</em></p>
+  <div class="about-grid">
+    <div class="reveal" style="transition-delay:0.12s">
+      <p class="about-quote">热爱光影，<br><span class="grad">相信细节即诗意</span></p>
       <p class="about-body">我专注于实时渲染与离线渲染的技法研究，尤其迷恋体积光、程序化材质和粒子特效带来的视觉层次感。每一件作品都是对「如何让虚拟世界更可信」这个问题的一次作答。</p>
-      <div class="about-skills">
+      <div class="skills">
         <span class="skill-chip">Blender</span>
         <span class="skill-chip">Unity URP</span>
         <span class="skill-chip">Shader Graph</span>
@@ -847,86 +552,43 @@ footer {
   </div>
 </section>
 
-<!-- ─── STUDY LOG ─── -->
-<section class="study" id="study" style="position:relative;overflow:hidden;">
-  <div class="wc-stage wc-stage-sm">
-    <div class="wc-blob wc-b1"></div>
-    <div class="wc-blob wc-b2"></div>
+<!-- ─── STUDY ─── -->
+<section class="block" id="study">
+  <div class="reveal">
+    <div class="sec-label">学习记录</div>
+    <h2 class="sec-h">拆解 · 实验 · 整理<br><span class="grad">把每次学习变成可回顾的笔记</span></h2>
   </div>
-  <div class="section-label fade-in visible" style="position:relative;z-index:1">学习记录</div>
-  <h2 class="section-h fade-in visible" style="margin-bottom:40px;position:relative;z-index:1">拆解 · 实验 · 整理<br><em>把每次学习过程变成可回顾的笔记</em></h2>
-  <div class="study-grid fade-in visible" style="position:relative;z-index:1">
-    <div class="study-card" onclick="openStudy(0)" style="cursor:pointer">
-      <div class="study-date">2025.03.14</div>
-      <div class="study-title">Houdini 体积光渲染技巧拆解</div>
-      <div class="study-desc">从零实现一个可控的体积光效果，记录 VDB 的使用流程与参数调节心得。</div>
-      <span class="study-tag">特效</span>
-    </div>
-    <div class="study-card" onclick="openStudy(1)" style="cursor:pointer">
-      <div class="study-date">2025.02.28</div>
-      <div class="study-title">Unity URP 自定义着色器入门</div>
-      <div class="study-desc">通过 Shader Graph 实现溶解与冰霜效果，整理节点逻辑与优化思路。</div>
-      <span class="study-tag">着色</span>
-    </div>
-    <div class="study-card" onclick="openStudy(2)" style="cursor:pointer">
-      <div class="study-date">2025.02.10</div>
-      <div class="study-title">程序化地形生成笔记</div>
-      <div class="study-desc">结合噪声函数与高度图，在 Blender 中构建可复用的程序化地形资产。</div>
-      <span class="study-tag">场景</span>
-    </div>
-    <div class="study-card" onclick="openStudy(3)" style="cursor:pointer">
-      <div class="study-date">2025.01.22</div>
-      <div class="study-title">粒子系统性能优化实验</div>
-      <div class="study-desc">对比不同粒子数量与 GPU 粒子方案的帧率表现，总结移动端适配策略。</div>
-      <span class="study-tag">特效</span>
-    </div>
-    <div class="study-card" onclick="openStudy(4)" style="cursor:pointer">
-      <div class="study-date">2025.01.05</div>
-      <div class="study-title">Substance 材质球制作流程</div>
-      <div class="study-desc">从参考收集到最终输出，记录一块锈迹金属材质的完整制作过程。</div>
-      <span class="study-tag">着色</span>
-    </div>
-    <div class="study-card" onclick="openStudy(5)" style="cursor:pointer">
-      <div class="study-date">2024.12.18</div>
-      <div class="study-title">场景光照设计方法论</div>
-      <div class="study-desc">整理三点布光在实时渲染中的变体应用，以及如何用 HDRI 快速建立光照氛围。</div>
-      <span class="study-tag">场景</span>
-    </div>
-  </div>
+  <div class="study-grid" id="studyGrid"></div>
 </section>
 
 <!-- ─── CONTACT ─── -->
-<section class="contact" id="contact" style="position:relative;overflow:hidden;">
-  <div class="wc-stage wc-stage-sm">
-    <div class="wc-blob wc-b1"></div>
-    <div class="wc-blob wc-b2"></div>
+<section class="block" id="contact">
+  <div class="reveal">
+    <div class="sec-label">联系我</div>
+    <h2 class="sec-h">有任何想法，<br><span class="grad">都欢迎留言</span></h2>
   </div>
-  <div class="contact-inner" style="position:relative;z-index:1">
-    <div class="contact-text fade-in visible">
-      <div class="section-label">联系我</div>
-      <h2 class="section-h">有任何想法，<br><em>都欢迎留言</em></h2>
+  <div class="contact-grid">
+    <div class="reveal">
       <p class="contact-body">关于作品的想法、合作意向，或者只是想交流技术细节，随时联系我。</p>
-      <div class="contact-chime-note">
-        <svg width="28" height="60" viewBox="0 0 28 60" fill="none">
-          <line x1="14" y1="0" x2="14" y2="15" stroke="rgba(28,21,16,0.3)" stroke-width="1"></line>
-          <line x1="4" y1="15" x2="24" y2="15" stroke="rgba(28,21,16,0.35)" stroke-width="1.2"></line>
-          <line x1="4" y1="16" x2="5" y2="42" stroke="rgba(28,21,16,0.3)" stroke-width="1.2"></line>
-          <ellipse cx="4.5" cy="47" rx="5" ry="7" fill="rgba(196,98,42,0.2)" stroke="rgba(28,21,16,0.25)" stroke-width="1"></ellipse>
-          <line x1="14" y1="16" x2="15" y2="50" stroke="rgba(28,21,16,0.35)" stroke-width="1.2"></line>
-          <ellipse cx="14.5" cy="56" rx="5" ry="7" fill="rgba(100,110,180,0.2)" stroke="rgba(28,21,16,0.3)" stroke-width="1"></ellipse>
-          <line x1="24" y1="16" x2="24" y2="35" stroke="rgba(28,21,16,0.28)" stroke-width="1.2"></line>
-          <ellipse cx="24" cy="40" rx="5" ry="7" fill="rgba(70,140,130,0.2)" stroke="rgba(28,21,16,0.25)" stroke-width="1"></ellipse>
+      <div class="chime-note">
+        <svg width="26" height="52" viewBox="0 0 26 52" fill="none">
+          <line x1="13" y1="0" x2="13" y2="7" stroke="rgba(255,255,255,0.4)" stroke-width="1"/>
+          <circle cx="13" cy="14" r="7" fill="rgba(154,117,232,0.16)" stroke="rgba(255,255,255,0.55)" stroke-width="1"/>
+          <circle cx="10.6" cy="13" r="1" fill="rgba(255,255,255,0.75)"/>
+          <circle cx="15.4" cy="13" r="1" fill="rgba(255,255,255,0.75)"/>
+          <path d="M10.9 16.4 Q13 18 15.1 16.4" stroke="rgba(255,255,255,0.7)" stroke-width="1" stroke-linecap="round"/>
+          <path d="M6.6 20 C5.9 27.5 4.9 34.5 3.6 41.5 C7 40 10 40 13 41.8 C16 40 19 40 22.4 41.5 C21.1 34.5 20.1 27.5 19.4 20" fill="rgba(154,117,232,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="1" stroke-linejoin="round"/>
         </svg>
         风铃一响，便是有风来访
       </div>
     </div>
-    <div class="fade-in" style="transition-delay:0.15s">
-      <form class="contact-form" onsubmit="handleSubmit(event)">
+    <div class="reveal" style="transition-delay:0.12s">
+      <form class="contact-form" id="contactForm">
         <div class="form-row">
-          <input class="form-input" placeholder="姓名" required="">
-          <input class="form-input" type="email" placeholder="邮箱" required="">
+          <input class="form-input" id="fName" placeholder="姓名" required>
+          <input class="form-input" id="fMail" type="email" placeholder="邮箱" required>
         </div>
-        <select class="form-select form-input">
+        <select class="form-select" id="fTopic">
           <option value="">主题……</option>
           <option>场景设计交流</option>
           <option>特效技术探讨</option>
@@ -934,530 +596,143 @@ footer {
           <option>合作项目</option>
           <option>其他</option>
         </select>
-        <textarea class="form-textarea" placeholder="你想说的……" required=""></textarea>
+        <textarea class="form-textarea" id="fMsg" placeholder="你想说的……" required></textarea>
         <button class="form-submit" type="submit">发送消息 →</button>
+        <div class="form-ok" id="formOk">已为你打开邮件客户端，期待与你的交流。</div>
       </form>
-      <div id="formSuccess" style="display:none; margin-top:16px; font-family:'Noto Sans SC',sans-serif; font-size:13px; color:var(--accent-warm); padding:12px 0; border-top:1px solid var(--ink-faint);">
-        ✉ 消息已发送，期待与你的交流。
-      </div>
     </div>
   </div>
 </section>
+</main>
 
 <!-- ─── FOOTER ─── -->
 <footer>
-  <div class="footer-logo">
-    <span class="footer-logo-name">Wind Chimes</span>
-    <span class="footer-logo-sep"></span>
-    <span class="footer-logo-sub">Studio Log</span>
-  </div>
-  <div class="footer-links">
-    <a href="#works">作品</a>
-    <a href="#about">关于</a>
-    <a href="#study">学习</a>
-    <a href="#contact">联系</a>
-  </div>
-  <span class="footer-copy">© 2025 Studio Log</span>
+  <span class="footer-copy">&copy; 2026 Wind Chimes</span>
 </footer>
 
-<!-- ─── TWEAKS PANEL ─── -->
-<div class="tweak-panel" id="tweakPanel">
-  <div class="tweak-title">Tweaks</div>
-  <div class="tweak-group">
-    <label class="tweak-label">水彩强度</label>
-    <select class="tweak-select" id="washIntensity" onchange="applyTweaks()">
-      <option value="1">标准</option>
-      <option value="0.4">淡雅</option>
-      <option value="1.8">浓郁</option>
-    </select>
-  </div>
-  <div class="tweak-group">
-    <label class="tweak-label">主调色彩</label>
-    <div class="tweak-color-row">
-      <div class="tweak-swatch active" style="background:#C4622A" onclick="setAccent('#C4622A',this)" title="琥珀"></div>
-      <div class="tweak-swatch" style="background:#6B7AB8" onclick="setAccent('#6B7AB8',this)" title="靛蓝"></div>
-      <div class="tweak-swatch" style="background:#4A8A7A" onclick="setAccent('#4A8A7A',this)" title="青碧"></div>
-      <div class="tweak-swatch" style="background:#8A5A8A" onclick="setAccent('#8A5A8A',this)" title="紫藤"></div>
-    </div>
-  </div>
-  <div class="tweak-group">
-    <label class="tweak-label">背景纸色</label>
-    <div class="tweak-color-row">
-      <div class="tweak-swatch active" style="background:#F5EFE4; border:1px solid #ddd" onclick="setPaper('#F5EFE4','#EDE4D3',this)" title="暖白"></div>
-      <div class="tweak-swatch" style="background:#EFF2F0; border:1px solid #ddd" onclick="setPaper('#EFF2F0','#E3E8E5',this)" title="青白"></div>
-      <div class="tweak-swatch" style="background:#F2EEF5; border:1px solid #ddd" onclick="setPaper('#F2EEF5','#E8E2EF',this)" title="藕白"></div>
-      <div class="tweak-swatch" style="background:#F0EBE0; border:1px solid #ddd" onclick="setPaper('#F0EBE0','#E3D8C8',this)" title="旧纸"></div>
-    </div>
-  </div>
-</div>
-
-<!-- Sound toggle button -->
-<button class="sound-btn muted" id="soundBtn" onclick="toggleSound()" title="风铃声">🔕</button>
-
-<script>
-// ═══════════════════════════════════════════════
-// BOKEH ANIMATION
-// ═══════════════════════════════════════════════
-(function() {
-  const canvas = document.getElementById('bokehCanvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, bokehList = [];
-
-  const COLORS = [
-    [255, 220, 120],  // warm gold
-    [255, 200,  80],  // amber
-    [255, 240, 180],  // pale gold
-    [255, 180,  60],  // deep amber
-    [255, 255, 220],  // warm white
-    [240, 160,  60],  // orange gold
-  ];
-
-  function resize() {
-    const hero = canvas.parentElement;
-    W = canvas.width  = hero.offsetWidth;
-    H = canvas.height = hero.offsetHeight;
-  }
-
-  function makeBokeh() {
-    const col = COLORS[Math.floor(Math.random() * COLORS.length)];
-    return {
-      x: Math.random() * W,
-      y: Math.random() * H,
-      r: 12 + Math.random() * 80,       // radius
-      vx: (Math.random() - 0.5) * 0.3,
-      vy: -0.08 - Math.random() * 0.25, // float upward
-      alpha: 0.04 + Math.random() * 0.22,
-      targetAlpha: 0.04 + Math.random() * 0.22,
-      alphaSpeed: 0.003 + Math.random() * 0.006,
-      col,
-      life: 0,
-      maxLife: 200 + Math.random() * 400,
-    };
-  }
-
-  function init() {
-    resize();
-    bokehList = [];
-    for (let i = 0; i < 55; i++) {
-      const b = makeBokeh();
-      b.life = Math.random() * b.maxLife; // stagger
-      bokehList.push(b);
-    }
-  }
-
-  function drawBokeh(b) {
-    const progress = b.life / b.maxLife;
-    // fade in / fade out
-    let fade = 1;
-    if (progress < 0.15) fade = progress / 0.15;
-    else if (progress > 0.80) fade = (1 - progress) / 0.20;
-
-    const a = b.alpha * fade;
-    if (a <= 0) return;
-
-    // Outer glow
-    const grd = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r * 2.2);
-    grd.addColorStop(0,   `rgba(${b.col[0]},${b.col[1]},${b.col[2]},${a * 0.55})`);
-    grd.addColorStop(0.4, `rgba(${b.col[0]},${b.col[1]},${b.col[2]},${a * 0.25})`);
-    grd.addColorStop(1,   `rgba(${b.col[0]},${b.col[1]},${b.col[2]},0)`);
-    ctx.beginPath();
-    ctx.arc(b.x, b.y, b.r * 2.2, 0, Math.PI * 2);
-    ctx.fillStyle = grd;
-    ctx.fill();
-
-    // Core circle (ring effect)
-    ctx.beginPath();
-    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-    ctx.strokeStyle = `rgba(${b.col[0]},${b.col[1]},${b.col[2]},${a * 0.6})`;
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
-
-    // Inner bright spot
-    const inner = ctx.createRadialGradient(b.x - b.r * 0.25, b.y - b.r * 0.25, 0, b.x, b.y, b.r * 0.7);
-    inner.addColorStop(0, `rgba(255,255,240,${a * 0.7})`);
-    inner.addColorStop(1, `rgba(${b.col[0]},${b.col[1]},${b.col[2]},0)`);
-    ctx.beginPath();
-    ctx.arc(b.x, b.y, b.r * 0.7, 0, Math.PI * 2);
-    ctx.fillStyle = inner;
-    ctx.fill();
-  }
-
-  function tick() {
-    ctx.clearRect(0, 0, W, H);
-
-    // Warm atmospheric gradient overlay on canvas
-    const bg = ctx.createLinearGradient(0, 0, W * 0.6, H);
-    bg.addColorStop(0, 'rgba(20,8,0,0.18)');
-    bg.addColorStop(0.5, 'rgba(180,100,10,0.06)');
-    bg.addColorStop(1, 'rgba(240,200,80,0.04)');
-    ctx.fillStyle = bg;
-    ctx.fillRect(0, 0, W, H);
-
-    for (let i = bokehList.length - 1; i >= 0; i--) {
-      const b = bokehList[i];
-      b.x += b.vx + Math.sin(b.life * 0.012 + i) * 0.15;
-      b.y += b.vy;
-      b.life++;
-
-      // drift alpha
-      b.alpha += (b.targetAlpha - b.alpha) * b.alphaSpeed;
-      if (Math.abs(b.alpha - b.targetAlpha) < 0.002) {
-        b.targetAlpha = 0.04 + Math.random() * 0.22;
-      }
-
-      if (b.life >= b.maxLife || b.y < -b.r * 3) {
-        bokehList[i] = makeBokeh();
-        bokehList[i].y = H + bokehList[i].r;
-        bokehList[i].life = 0;
-      } else {
-        drawBokeh(b);
-      }
-    }
-    requestAnimationFrame(tick);
-  }
-
-  window.addEventListener('resize', () => { resize(); });
-  init();
-  tick();
-})();
-
-// ═══════════════════════════════════════════════
-// WIND CHIME AUDIO ENGINE
-// ═══════════════════════════════════════════════
-let audioCtx = null;
-let soundOn = false;
-let chimeInterval = null;
-
-// Pentatonic-ish frequencies (C5, E5, G5, A5, D6, E6, G6)
-const CHIME_FREQS = [523.25, 659.25, 783.99, 880.00, 1174.66, 1318.51, 1567.98];
-
-function initAudio() {
-  if (audioCtx) return;
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-}
-
-function playChimeTone(freq, delay = 0) {
-  if (!audioCtx || !soundOn) return;
-  const t = audioCtx.currentTime + delay;
-
-  // Oscillator (sine for pure tone)
-  const osc = audioCtx.createOscillator();
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(freq, t);
-  // Slight pitch drift
-  osc.frequency.exponentialRampToValueAtTime(freq * 0.998, t + 3);
-
-  // Gain envelope: sharp attack, long decay
-  const gain = audioCtx.createGain();
-  gain.gain.setValueAtTime(0, t);
-  gain.gain.linearRampToValueAtTime(0.18, t + 0.008);
-  gain.gain.exponentialRampToValueAtTime(0.001, t + 4.5);
-
-  // Reverb via convolver (simple delay network)
-  const convolver = audioCtx.createConvolver();
-  const rate = audioCtx.sampleRate;
-  const length = rate * 3;
-  const impulse = audioCtx.createBuffer(2, length, rate);
-  for (let ch = 0; ch < 2; ch++) {
-    const d = impulse.getChannelData(ch);
-    for (let i = 0; i < length; i++) {
-      d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / length, 2.5);
-    }
-  }
-  convolver.buffer = impulse;
-
-  // High-shelf filter for bright, airy quality
-  const shelf = audioCtx.createBiquadFilter();
-  shelf.type = 'highshelf';
-  shelf.frequency.value = 3000;
-  shelf.gain.value = 6;
-
-  // Dry/wet mix
-  const dryGain = audioCtx.createGain();
-  dryGain.gain.value = 0.6;
-  const wetGain = audioCtx.createGain();
-  wetGain.gain.value = 0.4;
-
-  osc.connect(shelf);
-  shelf.connect(gain);
-  gain.connect(dryGain);
-  gain.connect(convolver);
-  convolver.connect(wetGain);
-  dryGain.connect(audioCtx.destination);
-  wetGain.connect(audioCtx.destination);
-
-  osc.start(t);
-  osc.stop(t + 5);
-}
-
-function scheduleChime() {
-  if (!soundOn) return;
-  // Random 1-3 note cluster
-  const count = Math.random() < 0.4 ? 1 : Math.random() < 0.6 ? 2 : 3;
-  const baseFreq = CHIME_FREQS[Math.floor(Math.random() * CHIME_FREQS.length)];
-  playChimeTone(baseFreq, 0);
-  if (count > 1) {
-    const f2 = CHIME_FREQS[Math.floor(Math.random() * CHIME_FREQS.length)];
-    playChimeTone(f2, 0.12 + Math.random() * 0.3);
-  }
-  if (count > 2) {
-    const f3 = CHIME_FREQS[Math.floor(Math.random() * CHIME_FREQS.length)];
-    playChimeTone(f3, 0.35 + Math.random() * 0.5);
-  }
-  // Next chime: 1.5 – 5 sec
-  const next = 1500 + Math.random() * 3500;
-  chimeInterval = setTimeout(scheduleChime, next);
-}
-
-function toggleSound() {
-  initAudio();
-  if (audioCtx.state === 'suspended') audioCtx.resume();
-  soundOn = !soundOn;
-  const btn = document.getElementById('soundBtn');
-  btn.classList.toggle('muted', !soundOn);
-  btn.textContent = soundOn ? '🔔' : '🔕';
-  if (soundOn) {
-    scheduleChime();
-  } else {
-    clearTimeout(chimeInterval);
-  }
-}
-</script>
-window.addEventListener('message', e =&gt; {
-  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweakPanel').classList.add('visible');
-  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweakPanel').classList.remove('visible');
-});
-window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accentColor": "#C4622A",
-  "paperColor": "#F5EFE4",
-  "paperDark": "#EDE4D3",
-  "washIntensity": "1"
-}/*EDITMODE-END*/;
-
-function setAccent(color, el) {
-  document.documentElement.style.setProperty('--accent-warm', color);
-  document.querySelectorAll('.tweak-swatch').forEach(s =&gt; {
-    if(s.onclick?.toString().includes('setAccent')) s.classList.remove('active');
-  });
-  el.classList.add('active');
-  window.parent.postMessage({ type:'__edit_mode_set_keys', edits:{ accentColor: color }}, '*');
-}
-
-function setPaper(light, dark, el) {
-  document.documentElement.style.setProperty('--paper', light);
-  document.documentElement.style.setProperty('--paper-dark', dark);
-  document.querySelectorAll('.tweak-swatch').forEach(s =&gt; {
-    if(s.onclick?.toString().includes('setPaper')) s.classList.remove('active');
-  });
-  el.classList.add('active');
-  window.parent.postMessage({ type:'__edit_mode_set_keys', edits:{ paperColor: light, paperDark: dark }}, '*');
-}
-
-function applyTweaks() {
-  const intensity = parseFloat(document.getElementById('washIntensity').value);
-  document.querySelectorAll('ellipse[fill*="rgba"]').forEach(el =&gt; {
-    const f = el.getAttribute('fill');
-    // Rough intensity scaling via opacity on parent SVG not feasible per-element easily;
-    // apply via CSS filter on wash containers
-  });
-  // Apply opacity to hero wash
-  const heroWash = document.querySelector('.hero-wash');
-  if (heroWash) heroWash.style.opacity = intensity;
-  window.parent.postMessage({ type:'__edit_mode_set_keys', edits:{ washIntensity: String(intensity) }}, '*');
-}
-
-// Works filter
-function filterWorks(e, cat) {
-  document.querySelectorAll('.filter-btn').forEach(b =&gt; b.classList.remove('active'));
-  e.target.classList.add('active');
-  document.querySelectorAll('.work-card').forEach(card =&gt; {
-    if (cat === 'all' || card.dataset.cat === cat) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-  // Re-apply featured class to first visible
-  const visible = [...document.querySelectorAll('.work-card')].filter(c =&gt; c.style.display !== 'none');
-  document.querySelectorAll('.work-card').forEach(c =&gt; c.classList.remove('featured'));
-  if (cat === 'all' &amp;&amp; visible.length &gt; 0) visible[0].classList.add('featured');
-}
-
-// Contact form
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('formSuccess').style.display = 'block';
-  e.target.style.opacity = '0.4';
-  e.target.style.pointerEvents = 'none';
-}
-
-// Scroll fade-in
-const observer = new IntersectionObserver(entries =&gt; {
-  entries.forEach(en =&gt; { if(en.isIntersecting) en.target.classList.add('visible'); });
-}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
-
-function initFade() {
-  document.querySelectorAll('.fade-in').forEach(el =&gt; {
-    const rect = el.getBoundingClientRect();
-    if (rect.top &lt; window.innerHeight + 100) {
-      el.classList.add('visible');
-    } else {
-      observer.observe(el);
-    }
-  });
-}
-// Run immediately + after short delay to catch late-rendering elements
-setTimeout(initFade, 50);
-setTimeout(initFade, 300);
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFade);
-} else {
-  initFade();
-}
-window.addEventListener('scroll', () =&gt; {
-  document.querySelectorAll('.fade-in:not(.visible)').forEach(el =&gt; {
-    const rect = el.getBoundingClientRect();
-    if (rect.top &lt; window.innerHeight - 40) el.classList.add('visible');
-  });
-}, { passive: true });
-
-
-
-
-<!-- ─── WORK DETAIL OVERLAY ─── -->
+<!-- ─── DETAIL OVERLAYS ─── -->
 <div class="detail-overlay" id="workDetail">
-  <div class="detail-inner">
-    <button class="detail-back" onclick="closeDetail('workDetail')">返回作品集</button>
-    <div class="detail-hero-img">
-      <div class="detail-hero-wash" id="workDetailHeroWash"></div>
-    </div>
-    <div class="detail-eyebrow" id="workDetailCat">特效</div>
-    <h1 class="detail-title" id="workDetailTitle">作品标题</h1>
-    <div class="detail-meta">
-      <div class="detail-meta-item"><strong>类型</strong><span id="workDetailType">—</span></div>
-      <div class="detail-meta-item"><strong>工具</strong><span id="workDetailTools">—</span></div>
-      <div class="detail-meta-item"><strong>时间</strong><span id="workDetailDate">—</span></div>
-    </div>
-    <div class="detail-body" id="workDetailBody"></div>
-    <div class="detail-img-grid" id="workDetailImgGrid"></div>
-    <div class="detail-tags" id="workDetailTags"></div>
-    <div class="detail-footer-nav">
-      <button class="detail-nav-btn" id="workDetailPrev" onclick="navigateWork(-1)">← 上一件</button>
-      <button class="detail-nav-btn" onclick="closeDetail('workDetail')">回到列表</button>
-      <button class="detail-nav-btn" id="workDetailNext" onclick="navigateWork(1)">下一件 →</button>
+  <div class="detail-card">
+    <div class="detail-hero" id="workDetailHero"><button class="detail-close" onclick="closeDetail('workDetail')">✕</button></div>
+    <div class="detail-body-wrap">
+      <div class="detail-eyebrow" id="workDetailCat"></div>
+      <h1 class="detail-title" id="workDetailTitle"></h1>
+      <div class="detail-meta">
+        <div class="detail-meta-item"><strong>类型</strong><span id="workDetailType"></span></div>
+        <div class="detail-meta-item"><strong>工具</strong><span id="workDetailTools"></span></div>
+        <div class="detail-meta-item"><strong>时间</strong><span id="workDetailDate"></span></div>
+      </div>
+      <div class="detail-body" id="workDetailBody"></div>
+      <div class="detail-shots" id="workDetailShots"></div>
+      <div class="detail-tags" id="workDetailTags"></div>
+      <div class="detail-nav">
+        <button class="detail-nav-btn" onclick="navigateWork(-1)">← 上一件</button>
+        <button class="detail-nav-btn" onclick="navigateWork(1)">下一件 →</button>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ─── STUDY DETAIL OVERLAY ─── -->
 <div class="detail-overlay" id="studyDetail">
-  <div class="detail-inner">
-    <button class="detail-back" onclick="closeDetail('studyDetail')">返回学习记录</button>
-    <div class="detail-eyebrow" id="studyDetailCat">学习笔记</div>
-    <h1 class="detail-title" id="studyDetailTitle">笔记标题</h1>
-    <div class="detail-meta">
-      <div class="detail-meta-item"><strong>日期</strong><span id="studyDetailDate">—</span></div>
-      <div class="detail-meta-item"><strong>分类</strong><span id="studyDetailTag">—</span></div>
-    </div>
-    <div class="detail-body" id="studyDetailBody"></div>
-    <div class="detail-tags" id="studyDetailTags"></div>
-    <div class="detail-footer-nav">
-      <button class="detail-nav-btn" id="studyDetailPrev" onclick="navigateStudy(-1)">← 上一篇</button>
-      <button class="detail-nav-btn" onclick="closeDetail('studyDetail')">回到列表</button>
-      <button class="detail-nav-btn" id="studyDetailNext" onclick="navigateStudy(1)">下一篇 →</button>
+  <div class="detail-card">
+    <div class="detail-hero" id="studyDetailHero"><button class="detail-close" onclick="closeDetail('studyDetail')">✕</button></div>
+    <div class="detail-body-wrap">
+      <div class="detail-eyebrow">学习笔记</div>
+      <h1 class="detail-title" id="studyDetailTitle"></h1>
+      <div class="detail-meta">
+        <div class="detail-meta-item"><strong>日期</strong><span id="studyDetailDate"></span></div>
+        <div class="detail-meta-item"><strong>分类</strong><span id="studyDetailTag"></span></div>
+      </div>
+      <div class="detail-body" id="studyDetailBody"></div>
+      <div class="detail-tags" id="studyDetailTags"></div>
+      <div class="detail-nav">
+        <button class="detail-nav-btn" onclick="navigateStudy(-1)">← 上一篇</button>
+        <button class="detail-nav-btn" onclick="navigateStudy(1)">下一篇 →</button>
+      </div>
     </div>
   </div>
 </div>
 
-
+<!-- ─── SOUND ─── -->
+<button class="sound-btn" id="soundBtn" title="风铃声" aria-label="风铃声">
+  <svg viewBox="0 0 24 24" fill="none" stroke="rgba(245,245,248,0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="1.5" x2="12" y2="4.5"/>
+    <circle cx="12" cy="8.5" r="3.8" fill="rgba(154,117,232,0.22)"/>
+    <path d="M8.6 11.6 C8.2 14.8 7.3 17.6 6.1 20 C8 19.2 10 19.2 12 20 C14 19.2 16 19.2 17.9 20 C16.7 17.6 15.8 14.8 15.4 11.6" fill="rgba(154,117,232,0.10)"/>
+    <path class="waves" d="M4.5 10.5 c-1.2 1-1.2 2.6 0 3.6 M19.5 10.5 c1.2 1 1.2 2.6 0 3.6" stroke="#ad97ee" stroke-width="1.2"/>
+  </svg>
+</button>
 <script>
-// ─── WORKS DATA ───
+/* ═══════════════ DATA ═══════════════ */
 const WORKS = [
   {
     id: 0, cat: '特效', title: '体积光实验 No.7',
     type: '特效渲染', tools: 'Houdini · 体积渲染', date: '2025.03',
-    gradient: 'linear-gradient(160deg,#c8c0d0 0%,#d0b8c8 40%,#c8b8a8 100%)',
-    gradW: 'linear-gradient(160deg,#c8c0d0,#d0b8c8)',
+    hues: ['#8374b8', '#c95d93', '#6755a8'],
     body: `<p>这组实验专注于探索体积光在复杂场景中的表现方式。通过 Houdini 的 VDB 体积系统，构建了可控的光雾环境，并研究光线在不同密度介质中的散射规律。</p>
     <h3>技术要点</h3>
     <p>核心挑战在于如何平衡渲染效率与视觉真实性。使用 OpenVDB 储存体积数据，通过 Mantra 的物理渲染引擎模拟光子在烟雾粒子中的多次散射，最终渲染时间控制在每帧 12 分钟以内。</p>
     <h3>学到了什么</h3>
     <p>体积光的视觉权重远超普通直接光照，即便是轻微的参数调整也会显著改变氛围。这次实验让我对「光的重量感」有了更直观的理解。</p>`,
-    imgs: [
-      {grad:'linear-gradient(135deg,#1a0533,#4a1a8f)'},
-      {grad:'linear-gradient(135deg,#280a00,#8f3a1a)'},
-    ],
+    shots: [['#8374b8','#c95d93'], ['#6755a8','#c38bc3']],
     tags: ['Houdini','体积渲染','OpenVDB','Mantra','光照研究']
   },
   {
     id: 1, cat: '场景', title: '夜城场景研究',
     type: '场景设计', tools: 'Blender · Unity URP', date: '2025.01',
-    gradient: 'linear-gradient(140deg,#c8d4d8 0%,#b8c8d0 50%,#c0d0c4 100%)',
-    gradW: 'linear-gradient(140deg,#c8d4d8,#b8c8d0)',
+    hues: ['#5275c5', '#3cb2bf', '#3568a0'],
     body: `<p>以赛博朋克城市为原型，研究如何在实时渲染引擎中还原电影级别的夜景光照。重点解决了霓虹灯的间接光照溢色、雨水反射面的实时反射遮挡，以及远景 LOD 过渡等技术问题。</p>
     <h3>Pipeline</h3>
     <p>在 Blender 中完成建模和 UV 展开，导入 Unity URP 后使用自定义着色器处理材质，HDRP 的屏幕空间反射配合手动绘制的反射探针实现雨地面效果。</p>
     <h3>关键发现</h3>
     <p>实时渲染中，间接光照的「假」感主要来自光照探针分辨率不足。适当降低场景其他元素精度、集中资源提升视觉焦点区域的光照质量，是平衡性能与效果的最优策略。</p>`,
-    imgs: [
-      {grad:'linear-gradient(135deg,#0a1628,#1a4a8f)'},
-      {grad:'linear-gradient(135deg,#0a2a1a,#1a6040)'},
-    ],
+    shots: [['#5275c5','#3cb2bf'], ['#3568a0','#73abbd']],
     tags: ['Blender','Unity URP','HDRP','屏幕空间反射','夜景光照']
   },
   {
     id: 2, cat: '着色', title: '熔岩材质着色',
     type: '材质研究', tools: 'Shader Graph · Substance', date: '2024.12',
-    gradient: 'linear-gradient(150deg,#ddc8b8 0%,#d4b8a0 50%,#ccaa90 100%)',
-    gradW: 'linear-gradient(150deg,#ddc8b8,#d4b8a0)',
+    hues: ['#ce8d48', '#b66969', '#b05f31'],
     body: `<p>通过程序化方式实现动态熔岩表面，无需任何预烘焙纹理，完全依赖 Shader Graph 的数学节点生成形态变化与颜色分布。</p>
     <h3>核心思路</h3>
     <p>使用多层 Voronoi 噪声叠加构建熔岩龟裂纹理，以时间变量驱动 UV 偏移模拟流动效果，HSV 颜色空间的 Value 通道控制灼热核心的发光强度。</p>
     <h3>优化方向</h3>
     <p>当前版本在移动端性能较差，主要瓶颈在于嵌套的 Voronoi 采样。下一步计划用预计算噪声贴图替代部分实时计算，在保留动态感的同时降低 GPU 开销。</p>`,
-    imgs: [
-      {grad:'linear-gradient(135deg,#280800,#8f3a10)'},
-      {grad:'linear-gradient(135deg,#401000,#804020)'},
-    ],
+    shots: [['#ce8d48','#b66969'], ['#b05f31','#c89a72']],
     tags: ['Shader Graph','Substance','Voronoi','程序化材质','移动端优化']
   },
   {
     id: 3, cat: '特效', title: '粒子风暴',
     type: '特效制作', tools: '粒子系统 · Unity', date: '2024.11',
-    gradient: 'linear-gradient(135deg,#c8d4c8 0%,#b8ccb8 50%,#c4d0b8 100%)',
-    gradW: 'linear-gradient(135deg,#c8d4c8,#b8ccb8)',
+    hues: ['#42b6a4', '#92b467', '#379488'],
     body: `<p>大规模粒子风暴特效，目标是在移动端实现 10 万粒子以上的实时渲染而不造成明显掉帧。核心技术路径是将粒子计算从 CPU 迁移至 GPU Compute Shader。</p>
     <h3>实现方案</h3>
     <p>使用 Unity 的 VFX Graph 系统，将粒子生命周期管理全部交给 GPU 处理。通过结构化缓冲区传递风场数据，让粒子响应动态风向变化，实现湍流感。</p>
     <h3>性能结果</h3>
     <p>在搭载 Snapdragon 888 的测试设备上，15 万粒子场景稳定保持 58fps，相比 CPU 方案提升约 6 倍。内存占用从 380MB 降至 95MB。</p>`,
-    imgs: [
-      {grad:'linear-gradient(135deg,#001a28,#1a7f5f)'},
-      {grad:'linear-gradient(135deg,#08100a,#1a4020)'},
-    ],
+    shots: [['#42b6a4','#92b467'], ['#379488','#5dc9a9']],
     tags: ['VFX Graph','Compute Shader','GPU粒子','移动端','性能优化']
   },
   {
     id: 4, cat: '草图', title: '程序化云层概念草图',
     type: '概念探索', tools: 'Blender · 几何节点', date: '2024.10',
-    gradient: 'linear-gradient(150deg,#d0c8d8 0%,#c4b8d0 60%,#c8c0d4 100%)',
-    gradW: 'linear-gradient(150deg,#d0c8d8,#c4b8d0)',
+    hues: ['#9174b8', '#c95da9', '#684996'],
     body: `<p>使用 Blender 几何节点探索程序化云层生成的可能性。目标是找到一种参数化的方法，让艺术家可以用少量参数控制云层的整体形态与细节密度。</p>
     <h3>节点架构</h3>
     <p>以 3D 噪声场为基础，通过阈值切割生成云的基本轮廓，叠加多频次细节噪声增加真实感，最后用体积散射材质渲染最终效果。</p>
     <h3>待解决问题</h3>
     <p>当前方案在云的边缘细节上仍有失真，主要原因是噪声频率跳跃过于均匀。下一步尝试引入分形布朗运动（fBm）噪声改善边缘质量。</p>`,
-    imgs: [
-      {grad:'linear-gradient(135deg,#1a1020,#3a2050)'},
-      {grad:'linear-gradient(135deg,#100040,#400080)'},
-    ],
+    shots: [['#9174b8','#c95da9'], ['#684996','#aa76ce']],
     tags: ['Blender','几何节点','程序化','体积材质','云层模拟']
-  },
+  }
 ];
 
-// ─── STUDY DATA ───
+const STUDY_HUES = {
+  '特效': ['#8374b8', '#c95d93'],
+  '着色': ['#ce8d48', '#b66969'],
+  '场景': ['#5275c5', '#3cb2bf'],
+  '草图': ['#9174b8', '#c95da9']
+};
 const STUDIES = [
   {
     id: 0, tag: '特效', date: '2025.03.14', title: 'Houdini 体积光渲染技巧拆解',
@@ -1535,128 +810,294 @@ const STUDIES = [
   },
 ];
 
-let currentWorkIdx = 0;
-let currentStudyIdx = 0;
+/* ═══════════════ RENDER: works & study grids ═══════════════ */
+function coverBlobs(hues, size) {
+return hues.map((h, i) => {
+const s = size * (0.75 - i * 0.14);
+const x = [6, 52, 30][i % 3], y = [4, 8, 48][i % 3];
+return `<div class="blob" style="width:${s}%;height:${s * 0.9}%;left:${x}%;top:${y}%;background:radial-gradient(circle,${h} 0%,transparent 70%);opacity:${0.55 - i * 0.10}"></div>`;
+}).join('');
+}
 
-function makeWash(gradient) {
-  return `<div style="position:absolute;inset:0;background:${gradient};"></div>`;
+function renderWorks() {
+const grid = document.getElementById('worksGrid');
+grid.innerHTML = WORKS.map((w, i) => `
+<div class="work-card${i === 0? ' featured': ''} reveal" data-cat="${w.cat}" style="--sc1:${w.hues[0]};--sc2:${w.hues[1] || w.hues[0]}" onclick="openWork(${w.id})">
+<div class="work-cover">${coverBlobs(w.hues, 95)}</div>
+<div class="work-info">
+<div class="work-catline"><span class="cdot" style="background:${w.hues[0]};box-shadow:0 0 10px ${w.hues[0]}"></span>${w.cat} · ${w.date}</div>
+<div class="work-title">${w.title}</div>
+<div class="work-tools">${w.tools}</div>
+</div>
+</div>`).join('');
+}
+
+function renderStudies() {
+const grid = document.getElementById('studyGrid');
+grid.innerHTML = STUDIES.map((s, i) => {
+const hues = STUDY_HUES[s.tag] || ['#9a75e8', '#51d1e3'];
+return `
+<div class="study-card reveal" style="--sc1:${hues[0]};--sc2:${hues[1]};transition-delay:${(i % 3) * 0.08}s" onclick="openStudy(${s.id})">
+<div class="study-date">${s.date}</div>
+<div class="study-title">${s.title}</div>
+<div class="study-desc">${s.desc}</div>
+<span class="study-tag">${s.tag}</span>
+</div>`;
+}).join('');
+}
+
+/* ═══════════════ REVEAL on scroll ═══════════════ */
+const revealObs = new IntersectionObserver(entries => {
+entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); revealObs.unobserve(en.target);}});
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px'});
+function watchReveals() {
+document.querySelectorAll('.reveal:not(.in)').forEach(el => revealObs.observe(el));
+}
+
+/* ═══════════════ FILTERS ═══════════════ */
+document.querySelectorAll('.filter-btn').forEach(btn => {
+btn.addEventListener('click', () => {
+document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+btn.classList.add('active');
+const cat = btn.dataset.cat;
+let first = true;
+document.querySelectorAll('.work-card').forEach(card => {
+const show = cat === 'all' || card.dataset.cat === cat;
+card.style.display = show? '': 'none';
+card.classList.remove('featured');
+if (show && first && cat === 'all') { card.classList.add('featured'); first = false;}
+});
+});
+});
+
+/* ═══════════════ DETAIL overlays ═══════════════ */
+let currentWorkIdx = 0, currentStudyIdx = 0;
+
+function heroBlobs(hues) {
+return hues.map((h, i) => {
+const s = [85, 70, 55][i % 3];
+const x = [2, 48, 28][i % 3], y = [6, 10, 42][i % 3];
+return `<div class="blob" style="width:${s}%;height:${s * 0.85}%;left:${x}%;top:${y}%;background:radial-gradient(circle,${h} 0%,transparent 70%);opacity:${0.8 - i * 0.15}"></div>`;
+}).join('');
+}
+
+function shotDiv(pair) {
+return `<div class="detail-shot" style="background:#0d0d11">
+<div class="blob" style="width:80%;height:90%;left:2%;top:4%;background:radial-gradient(circle,${pair[0]} 0%,transparent 70%);opacity:0.8"></div>
+<div class="blob" style="width:65%;height:75%;left:38%;top:22%;background:radial-gradient(circle,${pair[1]} 0%,transparent 70%);opacity:0.65"></div>
+</div>`;
 }
 
 function openWork(idx) {
-  currentWorkIdx = idx;
-  const w = WORKS[idx];
-  document.getElementById('workDetailCat').textContent = w.cat;
-  document.getElementById('workDetailTitle').innerHTML = w.title;
-  document.getElementById('workDetailType').textContent = w.type;
-  document.getElementById('workDetailTools').textContent = w.tools;
-  document.getElementById('workDetailDate').textContent = w.date;
-  document.getElementById('workDetailBody').innerHTML = w.body;
-  document.getElementById('workDetailHeroWash').innerHTML = `<div style="position:absolute;inset:0;background:${w.gradient}"></div>`;
-  document.getElementById('workDetailImgGrid').innerHTML = w.imgs.map(img =>
-    `<div class="detail-img-block"><div style="position:absolute;inset:0;background:${img.grad}"></div></div>`
-  ).join('');
-  document.getElementById('workDetailTags').innerHTML = w.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
-  document.getElementById('workDetailPrev').style.visibility = idx > 0 ? 'visible' : 'hidden';
-  document.getElementById('workDetailNext').style.visibility = idx < WORKS.length - 1 ? 'visible' : 'hidden';
-  const overlay = document.getElementById('workDetail');
-  overlay.scrollTop = 0;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+currentWorkIdx = idx;
+const w = WORKS[idx];
+document.getElementById('workDetailHero').innerHTML =
+`<button class="detail-close" onclick="closeDetail('workDetail')">✕</button>` + heroBlobs(w.hues);
+document.getElementById('workDetailCat').textContent = w.cat + ' · Work';
+document.getElementById('workDetailTitle').textContent = w.title;
+document.getElementById('workDetailType').textContent = w.type;
+document.getElementById('workDetailTools').textContent = w.tools;
+document.getElementById('workDetailDate').textContent = w.date;
+document.getElementById('workDetailBody').innerHTML = w.body;
+document.getElementById('workDetailShots').innerHTML = w.shots.map(shotDiv).join('');
+document.getElementById('workDetailTags').innerHTML =
+w.tags.map(t => `<span class="skill-chip">${t}</span>`).join('');
+openOverlay('workDetail');
 }
 
 function openStudy(idx) {
-  currentStudyIdx = idx;
-  const s = STUDIES[idx];
-  document.getElementById('studyDetailCat').textContent = '学习笔记 · ' + s.tag;
-  document.getElementById('studyDetailTitle').textContent = s.title;
-  document.getElementById('studyDetailDate').textContent = s.date;
-  document.getElementById('studyDetailTag').textContent = s.tag;
-  document.getElementById('studyDetailBody').innerHTML = s.body;
-  document.getElementById('studyDetailTags').innerHTML = s.tags.map(t => `<span class="detail-tag">${t}</span>`).join('');
-  document.getElementById('studyDetailPrev').style.visibility = idx > 0 ? 'visible' : 'hidden';
-  document.getElementById('studyDetailNext').style.visibility = idx < STUDIES.length - 1 ? 'visible' : 'hidden';
-  const overlay = document.getElementById('studyDetail');
-  overlay.scrollTop = 0;
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
+currentStudyIdx = idx;
+const s = STUDIES[idx];
+const hues = STUDY_HUES[s.tag] || ['#9a75e8', '#51d1e3'];
+document.getElementById('studyDetailHero').innerHTML =
+`<button class="detail-close" onclick="closeDetail('studyDetail')">✕</button>` + heroBlobs(hues);
+document.getElementById('studyDetailTitle').textContent = s.title;
+document.getElementById('studyDetailDate').textContent = s.date;
+document.getElementById('studyDetailTag').textContent = s.tag;
+document.getElementById('studyDetailBody').innerHTML = s.body;
+document.getElementById('studyDetailTags').innerHTML =
+s.tags.map(t => `<span class="skill-chip">${t}</span>`).join('');
+openOverlay('studyDetail');
 }
 
+function openOverlay(id) {
+document.getElementById(id).classList.add('open');
+document.body.style.overflow = 'hidden';
+}
 function closeDetail(id) {
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow = '';
+document.getElementById(id).classList.remove('open');
+document.body.style.overflow = '';
 }
-
-function navigateWork(dir) {
-  const next = currentWorkIdx + dir;
-  if (next >= 0 && next < WORKS.length) openWork(next);
-}
-
-function navigateStudy(dir) {
-  const next = currentStudyIdx + dir;
-  if (next >= 0 && next < STUDIES.length) openStudy(next);
-}
-
-// Keyboard close
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeDetail('workDetail');
-    closeDetail('studyDetail');
-  }
+document.querySelectorAll('.detail-overlay').forEach(ov => {
+ov.addEventListener('click', e => { if (e.target === ov) closeDetail(ov.id);});
 });
-</script>
+document.addEventListener('keydown', e => {
+if (e.key === 'Escape') { closeDetail('workDetail'); closeDetail('studyDetail');}
+});
+function navigateWork(dir) {
+openWork((currentWorkIdx + dir + WORKS.length) % WORKS.length);
+}
+function navigateStudy(dir) {
+openStudy((currentStudyIdx + dir + STUDIES.length) % STUDIES.length);
+}
 
+/* ═══════════════ CONTACT → mailto ═══════════════ */
+const CONTACT_EMAIL = 'you@example.com'; // ← 改成你的真实收件邮箱
+document.getElementById('contactForm').addEventListener('submit', e => {
+e.preventDefault();
+const name = document.getElementById('fName').value.trim();
+const mail = document.getElementById('fMail').value.trim();
+const topic = document.getElementById('fTopic').value || '交流';
+const msg = document.getElementById('fMsg').value.trim();
+const subject = encodeURIComponent(`${topic} — ${name}`);
+const body = encodeURIComponent(`${msg}\n\n—— ${name}（${mail}）`);
+window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
+document.getElementById('formOk').style.display = 'block';
+});
 
-<script>
-(function() {
-  // Animate all .wc-blob and .cb elements using rAF
-  // Each blob gets a unique phase offset and speed
-  function easeInOut(t) {
-    return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-  }
+/* ═══════════════ WIND CHIME — WebAudio ═══════════════ */
+let audioCtx = null, soundOn = false, chimeTimer = null;
+const SCALE_NOTES = [523.25, 587.33, 659.25, 783.99, 880.0, 1046.5]; // C5 D5 E5 G5 A5 C6
+function initAudio() {
+if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+function playChimeTone(freq, delay = 0) {
+const t0 = audioCtx.currentTime + delay;
+const osc = audioCtx.createOscillator();
+const gain = audioCtx.createGain();
+osc.type = 'sine';
+osc.frequency.value = freq;
+gain.gain.setValueAtTime(0, t0);
+gain.gain.linearRampToValueAtTime(0.16, t0 + 0.015);
+gain.gain.exponentialRampToValueAtTime(0.0001, t0 + 3.2);
+// shimmer partial
+const osc2 = audioCtx.createOscillator();
+const gain2 = audioCtx.createGain();
+osc2.type = 'sine';
+osc2.frequency.value = freq * 2.76;
+gain2.gain.setValueAtTime(0, t0);
+gain2.gain.linearRampToValueAtTime(0.035, t0 + 0.01);
+gain2.gain.exponentialRampToValueAtTime(0.0001, t0 + 2.0);
+osc.connect(gain).connect(audioCtx.destination);
+osc2.connect(gain2).connect(audioCtx.destination);
+osc.start(t0); osc.stop(t0 + 3.4);
+osc2.start(t0); osc2.stop(t0 + 2.2);
+}
+function scheduleChime() {
+if (!soundOn) return;
+const n = 1 + Math.floor(Math.random() * 3);
+for (let i = 0; i < n; i++) {
+playChimeTone(SCALE_NOTES[Math.floor(Math.random() * SCALE_NOTES.length)], i * (0.35 + Math.random() * 0.5));
+}
+chimeTimer = setTimeout(scheduleChime, 4000 + Math.random() * 9000);
+}
+document.getElementById('soundBtn').addEventListener('click', function () {
+soundOn =!soundOn;
+this.classList.toggle('on', soundOn);
+if (soundOn) { initAudio(); playChimeTone(SCALE_NOTES[0]); playChimeTone(SCALE_NOTES[3], 0.4); scheduleChime();}
+else clearTimeout(chimeTimer);
+});
 
-  const blobConfigs = [
-    // wc-stage hero blobs: [selector, tx range, ty range, scale range, period ms]
-    { sel: '.wc-stage:not(.wc-stage-sm) .wc-b1', tx:[-120,120], ty:[-80,80],   s:[0.92,1.12], period:14000, phase:0 },
-    { sel: '.wc-stage:not(.wc-stage-sm) .wc-b2', tx:[-140,60],  ty:[-110,60],  s:[0.90,1.14], period:17000, phase:0.3 },
-    { sel: '.wc-stage:not(.wc-stage-sm) .wc-b3', tx:[-80,100],  ty:[-60,130],  s:[0.93,1.10], period:20000, phase:0.6 },
-    { sel: '.wc-stage:not(.wc-stage-sm) .wc-b4', tx:[-100,70],  ty:[-80,40],   s:[0.90,1.12], period:16000, phase:0.15 },
-    { sel: '.wc-stage:not(.wc-stage-sm) .wc-b5', tx:[-60,80],   ty:[-100,60],  s:[0.93,1.08], period:19000, phase:0.5 },
-    // wc-stage-sm blobs
-    { sel: '.wc-stage-sm .wc-b1', tx:[-80,80],  ty:[-60,60],  s:[0.93,1.10], period:18000, phase:0.2 },
-    { sel: '.wc-stage-sm .wc-b2', tx:[-100,60], ty:[-80,40],  s:[0.91,1.12], period:21000, phase:0.7 },
-    // chime sway blobs
-    { sel: '.cb1', tx:[-30,30], ty:[-20,20], rot:[-8,8],  s:[1,1.04], period:4000, phase:0 },
-    { sel: '.cb2', tx:[-25,25], ty:[-15,15], rot:[-10,6], s:[0.96,1.06], period:5000, phase:0.2 },
-    { sel: '.cb3', tx:[-20,20], ty:[-18,18], rot:[-5,9],  s:[0.97,1.05], period:6000, phase:0.4 },
-    { sel: '.cb4', tx:[-22,22], ty:[-12,12], rot:[-6,10], s:[0.97,1.03], period:4500, phase:0.6 },
-    { sel: '.cb5', tx:[-18,18], ty:[-15,15], rot:[-12,5], s:[0.95,1.05], period:3500, phase:0.8 },
-  ];
+/* ═══════════════ INIT ═══════════════ */
+renderWorks();
+renderStudies();
+watchReveals();
 
-  // Collect all matching elements
-  const blobs = blobConfigs.flatMap(cfg => {
-    return [...document.querySelectorAll(cfg.sel)].map(el => ({ el, cfg }));
+/* 锚点平滑滚动：显式 JS 驱动，不依赖原生锚点行为 */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const sel = a.getAttribute('href');
+    if (sel.length < 2) return;
+    const el = document.querySelector(sel);
+    if (!el) return;
+    e.preventDefault();
+    const y = el.getBoundingClientRect().top + window.scrollY - 84;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
   });
+});
 
-  function lerp(a, b, t) { return a + (b - a) * t; }
-  function ping(t) { return 0.5 - 0.5 * Math.cos(t * Math.PI * 2); } // 0→1→0
+/* 视差：色块随滚动差速位移 */
+(function driftParallax() {
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+const layers = Array.from(document.querySelectorAll('.drift .px'));
+if (!layers.length) return;
+let ticking = false;
+function update() {
+  const y = window.scrollY;
+  const k = (typeof window.__driftPx === 'number') ? window.__driftPx : 1;
+  for (const l of layers) l.style.transform = 'translate3d(0,' + (y * parseFloat(l.dataset.f) * k).toFixed(1) + 'px,0)';
+  ticking = false;
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+window.__driftPxUpdate = update;
+update();
+})();
 
-  function tick(ts) {
-    blobs.forEach(({ el, cfg }) => {
-      const t = ((ts / cfg.period) + cfg.phase) % 1;
-      const p = ping(t);
-      const tx = lerp(cfg.tx[0], cfg.tx[1], p);
-      const ty = lerp(cfg.ty[0], cfg.ty[1], p);
-      const sc = lerp(cfg.s[0], cfg.s[1], ping(t * 2 % 1));
-      const rot = cfg.rot ? lerp(cfg.rot[0], cfg.rot[1], p) : 0;
-      el.style.transform = cfg.rot
-        ? `rotate(${rot}deg) translate(${tx}px, ${ty}px) scale(${sc})`
-        : `translate(${tx}px, ${ty}px) scale(${sc})`;
-    });
-    requestAnimationFrame(tick);
+/* ═══════════════ DRIFT 调节面板 ═══════════════ */
+(function tune() {
+const DEF = { spd: 4, size: 1, blur: 1, op: 1, hue: 0, px: 1 };
+const CFG = [
+  { k: 'spd',  name: '漂移速度', min: 0.25, max: 4, step: 0.05, fmt: v => v.toFixed(2) + 'x' },
+  { k: 'size', name: '色块大小', min: 0.6,  max: 1.6, step: 0.05, fmt: v => v.toFixed(2) + 'x' },
+  { k: 'blur', name: '模糊程度', min: 0.4,  max: 1.6, step: 0.05, fmt: v => v.toFixed(2) + 'x' },
+  { k: 'op',   name: '色彩浓度', min: 0.2,  max: 1,   step: 0.05, fmt: v => Math.round(v * 100) + '%' },
+  { k: 'hue',  name: '色相偏移', min: -60,  max: 60,  step: 1,    fmt: v => v + '°' },
+  { k: 'px',   name: '视差强度', min: 0,    max: 2,   step: 0.05, fmt: v => v.toFixed(2) + 'x' },
+];
+const VAR = { size: '--d-size', blur: '--d-blur', op: '--d-op', hue: '--d-hue' };
+let cur = { ...DEF };
+try { Object.assign(cur, JSON.parse(localStorage.getItem('drift-tune') || '{}')); } catch (e) {}
+const root = document.documentElement;
+function apply() {
+  for (const c of CFG) {
+    if (c.k === 'spd') continue; // 速度用 playbackRate，平滑变速不跳变
+    const v = cur[c.k];
+    root.style.setProperty(VAR[c.k], c.k === 'hue' ? v + 'deg' : v);
   }
-
-  requestAnimationFrame(tick);
+  document.querySelectorAll('.drift .blob').forEach(b => {
+    b.getAnimations().forEach(a => { a.playbackRate = cur.spd; });
+  });
+  window.__driftPx = cur.px;
+  if (window.__driftPxUpdate) window.__driftPxUpdate();
+  try { localStorage.setItem('drift-tune', JSON.stringify(cur)); } catch (e) {}
+}
+const gear = document.createElement('button');
+gear.className = 'tune-gear'; gear.title = '调节背景 (T)'; gear.setAttribute('aria-label', '调节背景');
+gear.innerHTML = '&#9881;';
+const panel = document.createElement('div');
+panel.className = 'tune-panel';
+panel.innerHTML = '<h4>背景 / 视差调节</h4>' + CFG.map(c =>
+  `<div class="tune-row"><label>${c.name}<b id="tv-${c.k}"></b></label>` +
+  `<input type="range" id="tr-${c.k}" min="${c.min}" max="${c.max}" step="${c.step}"></div>`
+).join('') + '<button class="tune-reset" id="tuneReset">恢复默认</button><div class="tune-hint">按 T 呼出 / 隐藏 · 参数自动保存</div>';
+document.body.append(gear, panel);
+for (const c of CFG) {
+  const input = panel.querySelector('#tr-' + c.k);
+  const val = panel.querySelector('#tv-' + c.k);
+  input.value = cur[c.k];
+  val.textContent = c.fmt(cur[c.k]);
+  input.addEventListener('input', () => {
+    cur[c.k] = parseFloat(input.value);
+    val.textContent = c.fmt(cur[c.k]);
+    apply();
+  });
+}
+panel.querySelector('#tuneReset').addEventListener('click', () => {
+  cur = { ...DEF };
+  for (const c of CFG) {
+    panel.querySelector('#tr-' + c.k).value = cur[c.k];
+    panel.querySelector('#tv-' + c.k).textContent = c.fmt(cur[c.k]);
+  }
+  apply();
+});
+function toggle(force) { panel.classList.toggle('open', force !== undefined ? force : !panel.classList.contains('open')); }
+gear.addEventListener('click', () => toggle());
+addEventListener('keydown', e => {
+  if ((e.key === 't' || e.key === 'T') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) toggle();
+});
+apply();
 })();
 </script>
-
-</body></html>
+</body>
+</html>
