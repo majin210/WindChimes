@@ -73,9 +73,10 @@ body { background:var(--bg); color:var(--ink); font-family:"Noto Sans SC",system
   <div class="ed-actions">
     <button id="btnPreview" class="ed-btn ghost">预览整站</button>
     <button id="btnExport" class="ed-btn primary">导出 index.html</button>
+    <button id="btnPush" class="ed-btn primary" style="background:#1f6feb">推送到 GitHub</button>
   </div>
 </header>
-<div class="ed-hint">使用流程：① 下方添加 / 修改内容 → ② 点「预览整站」检查效果 → ③ 点「导出 index.html」下载 → ④ 覆盖到 GitHub 仓库并 push。<br>注意：本编辑器基于 2026-10-07 版网站生成；若网站整体改版，需要重新生成编辑器。</div>
+<div class="ed-hint">使用流程：① 下方添加 / 修改内容 → ② 点「预览整站」检查效果 → ③ 点「推送到 GitHub」一键覆盖主页并上线（首次需粘贴 GitHub Token，之后自动记住）。<br>注意：本编辑器基于 2026-10-07 版网站生成；若网站整体改版，需要重新生成编辑器。</div>
 <nav class="ed-tabs">
   <button class="ed-tab active" data-tab="works">精选作品</button>
   <button class="ed-tab" data-tab="studies">学习笔记</button>
@@ -326,6 +327,40 @@ $('btnPreview').addEventListener('click', () => {
 $('btnExport').addEventListener('click', () => {
   download('index.html', buildHTML());
   alert('已导出 index.html。覆盖到你的 GitHub 仓库并 push 即可上线。');
+});
+
+/* ─── 一键推送到 GitHub ─── */
+const GH_OWNER = 'majin210', GH_REPO = 'WindChimes', GH_PATH = 'index.html', GH_BRANCH = 'main';
+$('btnPush').addEventListener('click', async () => {
+  let token = localStorage.getItem('gh_pat');
+  if (!token) {
+    token = prompt('首次推送需要 GitHub Token（用 Fine-grained token，只给 WindChimes 仓库的 Contents 读写权限）：\n\nGitHub → Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token。\nToken 只保存在本浏览器本地，不会上传。');
+    if (!token) return;
+    token = token.trim();
+    localStorage.setItem('gh_pat', token);
+  }
+  const btn = $('btnPush');
+  btn.disabled = true; btn.textContent = '推送中…';
+  try {
+    const html = buildHTML();
+    const headers = { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' };
+    const meta = await fetch('https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/' + GH_PATH + '?ref=' + GH_BRANCH, { headers });
+    if (!meta.ok) throw new Error('读取仓库文件失败（' + meta.status + '），请检查 Token 权限。');
+    const sha = (await meta.json()).sha;
+    const b64 = btoa(unescape(encodeURIComponent(html)));
+    const put = await fetch('https://api.github.com/repos/' + GH_OWNER + '/' + GH_REPO + '/contents/' + GH_PATH, {
+      method: 'PUT',
+      headers: Object.assign({}, headers, { 'Content-Type': 'application/json' }),
+      body: JSON.stringify({ message: '内容编辑器一键推送：更新作品/笔记/邮箱', content: b64, sha: sha, branch: GH_BRANCH })
+    });
+    if (put.status === 401 || put.status === 403) { localStorage.removeItem('gh_pat'); throw new Error('Token 无效或权限不足，已清除本地 Token，请重试。'); }
+    if (put.status === 422) throw new Error('文件已被他人改动（sha 冲突），请刷新编辑器后重试。');
+    if (!put.ok) throw new Error('推送失败（' + put.status + '）。');
+    alert('推送成功！GitHub Pages 约 1 分钟后更新主页。');
+  } catch (err) {
+    alert('推送出错：' + err.message);
+  }
+  btn.disabled = false; btn.textContent = '推送到 GitHub';
 });
 extractData();
 renderLists();
