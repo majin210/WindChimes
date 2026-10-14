@@ -32,8 +32,10 @@ description: "维护用户的 WindChimes GitHub Pages 站点：视觉改版、�
 - 页脚只保留 `© 2026 Wind Chimes`
 - 联系区竖排：风铃卡片（图标+诗句"风铃一响，便是有风来访"+介绍）在上，表单在下，`.contact-grid` 单列 max-width 620px
 - Logo = 晴天娃娃：导航用渐变圆环 + 渐变娃娃（系绳、深色头心 `#1b1b28`、钟形波浪斗篷）；联系区图标与声音按钮用**同款造型白色线条版**（无渐变、无黑底）；声音按钮保留两侧声波
+- 渐变文字（hero 标题/统计/分区标题/关于引言）有 `gradBreathe` 流光动画：9 秒循环，`prefers-reduced-motion` 时关闭
 - 渐变 `chimeGrad`：`#9a75e8` → `#51d1e3` → `#df87eb`（defs 放在 `<body>` 后第一个隐藏 svg 里，id 全局引用）
-- 背景调参：6 滑杆（漂移速度/色块大小/模糊/浓度/色相/视差 0~2x），默认速度 4.00x，存 localStorage；移动端色块模糊 55px（桌面 90px）
+- 背景调参：6 滑杆（漂移速度/色块大小/模糊/浓度/色相/视差 0~2x），出厂默认值 `{ spd: 4, size: 1, blur: 0.9, op: 0.55, hue: -2, px: 1 }`，参数存 localStorage；面板有"保存为默认"（自定义默认值存 `drift-defaults`，恢复默认时优先用）；公开站（`*.github.io`）自动隐藏调参齿轮和 T 快捷键；移动端色块模糊 55px（桌面 90px）
+- 背景另有 `hueFlow` 色相流动画：42 秒周期 ±18° 摆动，与色相滑杆手动值叠加；`prefers-reduced-motion` 时关闭
 
 ## 标准工作流
 1. 在 `/tmp` 建小样改 → Playwright 截图 → 对话里给用户确认
