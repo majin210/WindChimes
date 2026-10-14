@@ -107,6 +107,7 @@ main, nav, footer { position: relative; z-index: 2; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .drift .blob { animation: none; }
+  .hero-h1 .grad { animation: none; background-position: 40% 50%; }
 }
 
 /* ─── NAV ─── */
@@ -160,8 +161,14 @@ nav {
   text-wrap: balance;
 }
 .hero-h1 .grad {
-  background: var(--grad-text);
+  background: linear-gradient(100deg, #ad97ee 0%, #7cdeea 25%, #f2afd5 50%, #ad97ee 75%, #7cdeea 100%);
+  background-size: 220% 100%;
   -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: gradBreathe 9s ease-in-out infinite;
+}
+@keyframes gradBreathe {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 .hero-sub {
   font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--ink-dim);
