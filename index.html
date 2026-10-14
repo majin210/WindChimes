@@ -107,7 +107,6 @@ main, nav, footer { position: relative; z-index: 2; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .drift .blob { animation: none; }
-  .hero-h1 .grad { animation: none; background-position: 40% 50%; }
 }
 
 /* ─── NAV ─── */
@@ -160,7 +159,10 @@ nav {
   margin-bottom: 24px;
   text-wrap: balance;
 }
-.hero-h1 .grad {
+.hero-h1 .grad,
+.hstat-num .grad,
+.sec-h .grad,
+.about-quote .grad {
   background: linear-gradient(100deg, #ad97ee 0%, #7cdeea 25%, #f2afd5 50%, #ad97ee 75%, #7cdeea 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -169,6 +171,12 @@ nav {
 @keyframes gradBreathe {
   0%, 100% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-h1 .grad,
+  .hstat-num .grad,
+  .sec-h .grad,
+  .about-quote .grad { animation: none; background-position: 40% 50%; }
 }
 .hero-sub {
   font-size: 16px; font-weight: 300; line-height: 1.9; color: var(--ink-dim);
@@ -195,7 +203,7 @@ nav {
 .btn-ghost:hover { color: #fff; gap: 14px; border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); }
 .hero-stats { display: flex; justify-content: flex-start; gap: 44px; margin-top: 64px; }
 .hstat-num { font-family: var(--font-latin); font-size: 30px; font-weight: 700; }
-.hstat-num .grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 .hstat-label { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.14em; margin-top: 6px; }
 
 /* Hero orb — the "dynamic wallpaper" object */
@@ -209,7 +217,7 @@ section.block { max-width: 1240px; margin: 0 auto; padding: 110px 48px 40px; scr
 }
 .sec-label::after { content: ''; width: 46px; height: 1px; background: rgba(245,245,248,0.28); }
 .sec-h { font-size: clamp(30px, 3.4vw, 48px); font-weight: 700; line-height: 1.35; margin-bottom: 18px; text-wrap: balance; }
-.sec-h .grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 .sec-sub { color: var(--ink-dim); font-weight: 300; line-height: 1.9; max-width: 560px; font-size: 15px; }
 
 /* ─── WORKS ─── */
@@ -283,7 +291,7 @@ section.block { max-width: 1240px; margin: 0 auto; padding: 110px 48px 40px; scr
 .about-head .sec-label { justify-content: center; }
 .about-grid { max-width: 700px; margin: 50px auto 0; text-align: center; }
 .about-quote { font-size: clamp(26px, 2.6vw, 38px); font-weight: 700; line-height: 1.5; margin-bottom: 22px; }
-.about-quote .grad { background: var(--grad-text); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
 .about-body { color: var(--ink-dim); font-weight: 300; line-height: 2; font-size: 15px; margin: 0 auto 34px; max-width: 560px; }
 .skills { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
 .skill-chip {
