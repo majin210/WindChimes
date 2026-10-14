@@ -503,6 +503,8 @@ footer {
   color: var(--ink-dim); font-size: 12px; cursor: pointer; letter-spacing: 0.1em;
 }
 .tune-reset:hover { color: #fff; border-color: rgba(255,255,255,0.25); }
+.tune-btnrow { display: flex; gap: 8px; margin-top: 4px; }
+.tune-btnrow .tune-reset { width: auto; flex: 1; margin-top: 0; }
 .tune-hint { font-size: 10px; color: var(--ink-faint); margin-top: 8px; text-align: center; letter-spacing: 0.06em; }
 </style>
 </head>
@@ -1101,6 +1103,13 @@ update();
 /* ═══════════════ DRIFT 调节面板 ═══════════════ */
 (function tune() {
 const DEF = { spd: 4, size: 1, blur: 1, op: 1, hue: 0, px: 1 };
+// 用户自定义默认值（"保存为默认"写入），恢复默认时优先使用
+function loadCustomDef() {
+  try { const d = JSON.parse(localStorage.getItem('drift-defaults') || 'null'); if (d && typeof d === 'object') return d; } catch (e) {}
+  return null;
+}
+let customDef = loadCustomDef();
+const getDef = () => ({ ...DEF, ...(customDef || {}) });
 const CFG = [
   { k: 'spd',  name: '漂移速度', min: 0.25, max: 4, step: 0.05, fmt: v => v.toFixed(2) + 'x' },
   { k: 'size', name: '色块大小', min: 0.6,  max: 1.6, step: 0.05, fmt: v => v.toFixed(2) + 'x' },
@@ -1110,7 +1119,7 @@ const CFG = [
   { k: 'px',   name: '视差强度', min: 0,    max: 2,   step: 0.05, fmt: v => v.toFixed(2) + 'x' },
 ];
 const VAR = { size: '--d-size', blur: '--d-blur', op: '--d-op', hue: '--d-hue' };
-let cur = { ...DEF };
+let cur = getDef();
 try { Object.assign(cur, JSON.parse(localStorage.getItem('drift-tune') || '{}')); } catch (e) {}
 const root = document.documentElement;
 function apply() {
@@ -1129,12 +1138,15 @@ function apply() {
 const gear = document.createElement('button');
 gear.className = 'tune-gear'; gear.title = '调节背景 (T)'; gear.setAttribute('aria-label', '调节背景');
 gear.innerHTML = '&#9881;';
+// 公开站点（GitHub Pages）隐藏调参入口，本地文件保留
+const isPublicSite = /\.github\.io$/.test(location.hostname);
+if (isPublicSite) gear.style.display = 'none';
 const panel = document.createElement('div');
 panel.className = 'tune-panel';
 panel.innerHTML = '<h4>背景 / 视差调节</h4>' + CFG.map(c =>
   `<div class="tune-row"><label>${c.name}<b id="tv-${c.k}"></b></label>` +
   `<input type="range" id="tr-${c.k}" min="${c.min}" max="${c.max}" step="${c.step}"></div>`
-).join('') + '<button class="tune-reset" id="tuneReset">恢复默认</button><div class="tune-hint">按 T 呼出 / 隐藏 · 参数自动保存</div>';
+).join('') + '<div class="tune-btnrow"><button class="tune-reset" id="tuneReset">恢复默认</button><button class="tune-reset" id="tuneSaveDef">保存为默认</button></div><div class="tune-hint">按 T 呼出 / 隐藏 · 参数自动保存</div>';
 document.body.append(gear, panel);
 for (const c of CFG) {
   const input = panel.querySelector('#tr-' + c.k);
@@ -1147,17 +1159,26 @@ for (const c of CFG) {
     apply();
   });
 }
-panel.querySelector('#tuneReset').addEventListener('click', () => {
-  cur = { ...DEF };
+function syncUI() {
   for (const c of CFG) {
     panel.querySelector('#tr-' + c.k).value = cur[c.k];
     panel.querySelector('#tv-' + c.k).textContent = c.fmt(cur[c.k]);
   }
   apply();
+}
+panel.querySelector('#tuneReset').addEventListener('click', () => {
+  cur = getDef();
+  syncUI();
+});
+panel.querySelector('#tuneSaveDef').addEventListener('click', () => {
+  try { localStorage.setItem('drift-defaults', JSON.stringify(cur)); customDef = { ...cur }; } catch (e) {}
+  const b = panel.querySelector('#tuneSaveDef'), t = b.textContent;
+  b.textContent = '已保存 ✓'; setTimeout(() => { b.textContent = t; }, 1200);
 });
 function toggle(force) { panel.classList.toggle('open', force !== undefined ? force : !panel.classList.contains('open')); }
 gear.addEventListener('click', () => toggle());
 addEventListener('keydown', e => {
+  if (isPublicSite) return;
   if ((e.key === 't' || e.key === 'T') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName)) toggle();
 });
 apply();
