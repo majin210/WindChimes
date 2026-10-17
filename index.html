@@ -653,7 +653,7 @@ footer {
 </footer>
 
 <!-- ─── DETAIL OVERLAYS ─── -->
-<div class="detail-overlay" id="workDetail">
+<div class="detail-overlay" id="workDetail" role="dialog" aria-modal="true" aria-labelledby="workDetailTitle" tabindex="-1">
   <div class="detail-card">
     <div class="detail-hero" id="workDetailHero"><button class="detail-close" aria-label="关闭" onclick="closeDetail('workDetail')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 1.5 L12.5 12.5 M12.5 1.5 L1.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
     <div class="detail-body-wrap">
@@ -675,7 +675,7 @@ footer {
   </div>
 </div>
 
-<div class="detail-overlay" id="studyDetail">
+<div class="detail-overlay" id="studyDetail" role="dialog" aria-modal="true" aria-labelledby="studyDetailTitle" tabindex="-1">
   <div class="detail-card">
     <div class="detail-hero" id="studyDetailHero"><button class="detail-close" aria-label="关闭" onclick="closeDetail('studyDetail')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1.5 1.5 L12.5 12.5 M12.5 1.5 L1.5 12.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button></div>
     <div class="detail-body-wrap">
@@ -989,19 +989,68 @@ s.tags.map(t => `<span class="skill-chip" onclick="filterByTag('${t}')">${t}</sp
 openOverlay('studyDetail');
 }
 
+/* ═══════════════ 焦点陷阱 ═══════════════ */
+let lastFocusedEl = null;
+
+function getFocusable(container) {
+  return Array.from(container.querySelectorAll(
+    'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+  )).filter(el => el.offsetParent !== null);
+}
+
+function trapFocus(e) {
+  const ov = document.querySelector('.detail-overlay.open');
+  if (!ov || e.key !== 'Tab') return;
+  const items = getFocusable(ov);
+  if (!items.length) { e.preventDefault(); return; }
+  const first = items[0], last = items[items.length - 1];
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault(); last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault(); first.focus();
+  }
+}
+
+const navEl = document.querySelector('nav');
+const mainEl = document.querySelector('main');
+const footerEl = document.querySelector('footer');
+const soundBtnEl = document.getElementById('soundBtn');
+
 function openOverlay(id) {
-document.getElementById(id).classList.add('open');
+const ov = document.getElementById(id);
+lastFocusedEl = document.activeElement;
+ov.classList.add('open');
 document.body.style.overflow = 'hidden';
+navEl.setAttribute('aria-hidden', 'true');
+mainEl.setAttribute('aria-hidden', 'true');
+footerEl.setAttribute('aria-hidden', 'true');
+soundBtnEl.setAttribute('aria-hidden', 'true');
+soundBtnEl.setAttribute('tabindex', '-1');
+// 等关闭按钮渲染完成后再移交焦点
+requestAnimationFrame(() => {
+  const closeBtn = ov.querySelector('.detail-close');
+  (closeBtn || ov).focus();
+});
 }
 function closeDetail(id) {
-document.getElementById(id).classList.remove('open');
+const ov = document.getElementById(id);
+if (!ov.classList.contains('open')) return;
+ov.classList.remove('open');
 document.body.style.overflow = '';
+navEl.removeAttribute('aria-hidden');
+mainEl.removeAttribute('aria-hidden');
+footerEl.removeAttribute('aria-hidden');
+soundBtnEl.removeAttribute('aria-hidden');
+soundBtnEl.removeAttribute('tabindex');
+if (lastFocusedEl && document.contains(lastFocusedEl)) lastFocusedEl.focus();
+lastFocusedEl = null;
 }
 document.querySelectorAll('.detail-overlay').forEach(ov => {
 ov.addEventListener('click', e => { if (e.target === ov) closeDetail(ov.id);});
 });
 document.addEventListener('keydown', e => {
 if (e.key === 'Escape') { closeDetail('workDetail'); closeDetail('studyDetail');}
+trapFocus(e);
 });
 function navigateWork(dir) {
 openWork((currentWorkIdx + dir + WORKS.length) % WORKS.length);
