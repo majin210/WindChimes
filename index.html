@@ -141,6 +141,8 @@ nav {
   background: var(--grad-text); transition: width 0.3s;
 }
 .nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: #fff; }
+.nav-links a.active::after { width: 100%; }
 
 /* ─── HERO ─── */
 .hero {
@@ -1235,6 +1237,17 @@ addEventListener('keydown', e => {
 });
 apply();
 })();
+
+/* ═══════════════ 导航 scroll-spy ═══════════════ */
+const spyLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) {
+      spyLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+spyLinks.forEach(a => { const s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
 </script>
 </body>
 </html>
